@@ -49,8 +49,17 @@ const logout = async (req, res) => {
         .json({ msg: 'user logged out' });
 }
 
+const getUser = async (req, res) => {
+    const userId = req.user.userId;
+
+    const user = await User.findOne({ _id: userId });
+
+    res.status(StatusCodes.OK).json(user);
+}
+
 module.exports = {
     register,
     login,
     logout,
+    getUser,
 }
