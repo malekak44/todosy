@@ -1,0 +1,9 @@
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const SIGN_UP = 'SIGN_UP';
+export const FETCH_USER = 'FETCH_USER';
+export const CREATE_TODO = 'CREATE_TODO';
+export const UPDATE_TODO = 'UPDATE_TODO';
+export const DELETE_TODO = 'DELETE_TODO';
+export const GET_ALL_TODOS = 'GET_ALL_TODOS';
+export const GET_TODAY_TODOS = 'GET_TODAY_TODOS';
