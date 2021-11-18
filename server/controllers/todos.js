@@ -57,11 +57,7 @@ const getTodayTodos = async (req, res) => {
 
     const today = new Date().getDate();
 
-    todos = todos.map(todo => {
-        if (todo.deadline.getDate() === today) {
-            return todo;
-        }
-    });
+    todos = todos.filter(todo => todo.deadline.getDate() === today);
 
     res.status(StatusCodes.OK).json({ todos, count: todos.length });
 }
