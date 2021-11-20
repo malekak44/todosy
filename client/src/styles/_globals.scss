@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-icon-cross: url('../assets/icon-cross.svg');
+    --bg-icon-cross-hover: url('../assets/icon-cross-hover.svg');
+}
+
 html {
     font-size: 62.5%;
 }
@@ -16,6 +21,6 @@ body {
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
     background: url('../assets/bg-desktop-light.jpg'), $veryLightGray;
+    background-position: 50% 0%;
     background-repeat: no-repeat;
-    background-size: contain;
 }

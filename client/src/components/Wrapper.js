@@ -4,7 +4,17 @@ import Filter from './Filter';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const Wrapper = () => {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState([{
+        id: 1,
+        title: 'complete online JavaScript course',
+        completed: true,
+    }, {
+        id: 2,
+        title: 'hey buddy'
+    }, {
+        id: 3,
+        title: 'have breakfast'
+    }]);
     useEffect(() => {
 
     });

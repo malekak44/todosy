@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Todo = ({ todo }) => {
+    const [completed, setCompleted] = useState(false);
+
     return (
         <div className="todo__item">
-            <button className="checkbox"></button>
+            <button
+                className={`checkbox ${completed ? 'completed' : ''}`}
+                onClick={() => setCompleted(!completed)}
+            ></button>
             <p>{todo.title}</p>
-            <button></button>
+            <button className="deleteBtn"></button>
         </div>
     );
 };

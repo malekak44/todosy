@@ -14,7 +14,7 @@ const Header = () => {
     const [darkTheme, setDarkTheme] = useState(getLocalStorage());
 
     useEffect(() => {
-        localStorage.setItem("darkTheme", JSON.stringify(darkTheme));
+        localStorage.setItem("darkTheme", darkTheme);
     }, [darkTheme]);
 
     return (
