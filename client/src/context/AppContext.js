@@ -26,10 +26,11 @@ const AppProvider = ({ children }) => {
         }
     }
 
-    const login = async (user) => {
+    const login = async (user, callback) => {
         try {
             const { data } = await axios.post(`${url}/auth/login`, user);
             setUser(data.user);
+            await callback();
         } catch (error) {
             console.log(error)
         }
