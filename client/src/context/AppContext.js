@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { createContext, useContext, useState, useEffect } from "react";
 import { url } from "../utils/url";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AppContext = createContext();
 
@@ -11,6 +11,16 @@ const AppProvider = ({ children }) => {
         try {
             const { data } = await axios.get(`${url}/showMe`);
             setUser(data.user);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const signup = async (user, callback) => {
+        try {
+            const { data } = await axios.post(`${url}/auth/register`, user);
+            setUser(data.user);
+            await callback();
         } catch (error) {
             console.log(error);
         }
@@ -39,6 +49,7 @@ const AppProvider = ({ children }) => {
             user,
             login,
             logout,
+            signup,
             fetchUser,
         }}>
             {children}
