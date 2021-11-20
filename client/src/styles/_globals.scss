@@ -15,8 +15,7 @@ html {
 body {
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
-    background: url('../assets/bg-desktop-light.jpg');
+    background: url('../assets/bg-desktop-light.jpg'), $veryLightGray;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 150vh;
 }
