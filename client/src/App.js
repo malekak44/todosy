@@ -12,13 +12,13 @@ export default function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/todos" element={
+        <Route exact path="/" element={
           <RequireAuth>
             <Todos />
           </RequireAuth>
         } />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
         <Route exact path="*" element={<NotFound />} />
       </Routes>
     </Router>

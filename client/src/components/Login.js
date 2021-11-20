@@ -39,7 +39,7 @@ const Login = () => {
                     <div className="form-group">
                         <input type="submit" value="Log In" />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group checkbox__group">
                         <label className="checkbox__wrapper">Remember Me
                             <input type="checkbox" />
                             <span className="checkmark"></span>
