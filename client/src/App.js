@@ -1,18 +1,20 @@
 import React from 'react';
-import Todos from './components/Todos';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Home from './pages/Home';
+import Todos from './pages/Todos';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
-import NotFound from './components/NotFound';
 import RequireAuth from './components/RequireAuth';
-import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={
+        <Route path="/" element={<Home />} />
+        <Route path="/todos" element={
           <RequireAuth>
             <Todos />
           </RequireAuth>
