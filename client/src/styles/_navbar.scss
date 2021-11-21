@@ -17,16 +17,35 @@
     }
 
     &__quote {
+        height: 2rem;
+        display: flex;
         font-style: italic;
+
+        p {
+            margin: 2px 4px 0;
+        }
+
+        img {
+            width: 16px;
+
+            &:first-child {
+                align-self: flex-start;
+            }
+
+            &:last-child {
+                align-self: flex-end;
+            }
+        }
     }
 
     &__links {
         a {
             color: #494c6b;
-            transition: color 0.3s ease-in-out;
+            transition: background-image 0.3s ease-in-out;
 
             &:hover {
-                color: $purple;
+                color: transparent;
+                @include gradient-text;
             }
 
             &:not(:last-child) {

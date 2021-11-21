@@ -1,15 +1,18 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import quoteLeft from '../assets/quote-left.png';
+import quoteRight from '../assets/quote-right.png';
 import React, { useEffect, useState } from 'react';
+import { url } from '../utils/url';
 
 const Navbar = () => {
-    const [quote, setQuote] = useState({});
-    const quoteUrl = "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+    const [quote, setQuote] = useState('');
+    const quoteUrl = `${url}/data/quote`;
 
     useEffect(() => {
-        const randomNumber = Math.floor(Math.random() * 100);
         axios.get(quoteUrl)
-            .then(data => setQuote(data.data.quotes[randomNumber]));
+            .then(data => setQuote(data.data.quote));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -17,7 +20,11 @@ const Navbar = () => {
             <Link to="/" className="navbar__logo">
                 Todosy
             </Link>
-            <p className="navbar__quote">{quote.quote}</p>
+            <div className="navbar__quote">
+                <img src={quoteLeft} alt="quote-left" />
+                <p>{quote}</p>
+                <img src={quoteRight} alt="quote-right" />
+            </div>
             <div className="navbar__links">
                 {/* <Link>Todos</Link>
                 <Link>Profile</Link> */}
