@@ -28,10 +28,7 @@
         a {
             color: transparent;
             text-decoration: none;
-            background-clip: text;
-            -moz-background-clip: text;
-            -webkit-background-clip: text;
-            background-image: linear-gradient(180deg, $skyBlue, $purple);
+            @include gradient-text;
         }
     }
 }

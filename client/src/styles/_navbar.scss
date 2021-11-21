@@ -1,0 +1,37 @@
+.navbar {
+    padding: 2.25rem 8rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+        text-decoration: none;
+    }
+
+    &__logo {
+        font-weight: bold;
+        color: transparent;
+        @include gradient-text;
+        text-transform: uppercase;
+    }
+
+    &__quote {
+        font-style: italic;
+    }
+
+    &__links {
+        a {
+            color: #494c6b;
+            transition: color 0.3s ease-in-out;
+
+            &:hover {
+                color: $purple;
+            }
+
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
+    }
+}

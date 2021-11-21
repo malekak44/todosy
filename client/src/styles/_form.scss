@@ -13,13 +13,6 @@
         border-top-right-radius: 0.5rem;
     }
 
-    .gradient__text {
-        background-clip: text;
-        -moz-background-clip: text;
-        -webkit-background-clip: text;
-        background-image: linear-gradient(180deg, $skyBlue, $purple);
-    }
-
     &__wrapper {
         padding: 3rem 4rem;
 
@@ -58,7 +51,7 @@
 
                         &+label {
                             color: transparent;
-                            @extend .gradient__text;
+                            @include gradient-text;
                         }
                     }
 
@@ -90,7 +83,7 @@
                         position: relative;
                         padding-left: 30px;
                         margin-bottom: 12px;
-                        @extend .gradient__text;
+                        @include gradient-text;
 
                         input[type=checkbox] {
                             position: absolute;
@@ -100,7 +93,7 @@
                             cursor: pointer;
 
                             &:checked~.checkmark::after {
-                                @extend .gradient__text;
+                                @include gradient-text;
                                 display: block;
                                 content: "\f14a";
                                 font-family: "FontAwesome";
@@ -136,7 +129,7 @@
             a {
                 color: transparent;
                 text-decoration: none;
-                @extend .gradient__text;
+                @include gradient-text;
             }
         }
     }
