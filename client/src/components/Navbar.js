@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { url } from '../utils/url';
 
 const Navbar = () => {
-    const [quote, setQuote] = useState('');
+    const [quote, setQuote] = useState('Life isn’t about getting and having, it’s about giving and being.');
     const quoteUrl = `${url}/data/quote`;
 
     useEffect(() => {

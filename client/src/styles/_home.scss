@@ -1,0 +1,31 @@
+.home {
+    margin-top: 6rem;
+
+    button {
+        @include gradient-button;
+        height: 48px;
+        font-size: 18px;
+        font-weight: 300;
+        padding: 17px 20px;
+        border-radius: 30px;
+    }
+
+    &__header {
+        text-align: center;
+        
+        h1 {
+            color: $white;
+            font-size: 5rem;
+            margin-bottom: 3rem;
+
+            span {
+                display: block;
+
+                &:first-child {
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+    }
+
+}
