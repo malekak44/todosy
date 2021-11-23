@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from '../components/Form';
-import Guide from '../components/Guide';
-import Header from '../components/Header';
-import Wrapper from '../components/Wrapper';
+import Form from '../components/Todos/Form';
+import Guide from '../components/Todos/Guide';
+import Header from '../components/Todos/Header';
+import Wrapper from '../components/Todos/Wrapper';
 
 const Todos = () => {
     return (

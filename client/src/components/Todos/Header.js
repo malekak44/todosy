@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import sun from '../assets/icon-sun.svg';
-import moon from '../assets/icon-moon.svg';
+import sun from '../../assets/icon-sun.svg';
+import moon from '../../assets/icon-moon.svg';
 const getLocalStorage = () => {
     const theme = localStorage.getItem("darkTheme");
     if (theme) {
