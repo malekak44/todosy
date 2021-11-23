@@ -4,6 +4,7 @@ import messyTable from '../assets/messy-table.png';
 import happyWoman from '../assets/happy-woman.jpg';
 import writingTodos from '../assets/writing-todos.jpg';
 import depressedGirl from '../assets/depressed-girl.jpg';
+import yogaGirl from '../assets/yoga-girl.png';
 
 const Home = () => {
     return (
@@ -84,6 +85,11 @@ const Home = () => {
                         <p>If you don't organize your works, your productivity will be decreased. It will hamper your focus. It can affect your time management. It can also affect your health. It can increase stress and anxiety. It can affect your professional growth and career enhancement. As a result, you will gradually become inefficient and unproductive to adapt to the rapidly changing world.</p>
                     </div>
                 </div>
+            </article>
+            <article className="home__free-up">
+                <h1>Free up your mental space</h1>
+                <p>Regain clarity and calmness by getting all those tasks out of your head and onto your to-do list (no matter where you are or what device you use).</p>
+                <img src={yogaGirl} alt="yoga-girl" />
             </article>
         </section>
     );
