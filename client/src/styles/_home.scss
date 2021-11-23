@@ -1,5 +1,5 @@
 .home {
-    margin-top: 6rem;
+    margin-top: 5.5rem;
 
     button {
         @include gradient-button;
@@ -12,7 +12,8 @@
 
     &__header {
         text-align: center;
-        
+        margin-bottom: 4rem;
+
         h1 {
             color: $white;
             font-size: 5rem;
@@ -28,4 +29,45 @@
         }
     }
 
+    &__content {
+        display: flex;
+        align-items: center;
+        margin-bottom: -4px;
+        justify-content: space-between;
+
+        &__text {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &__wrapper {
+                width: 80%;
+
+                h1 {
+                    font-size: 26px;
+                    color: #494c6b;
+                    margin-bottom: 14px;
+                }
+
+                p,
+                ul li {
+                    color: #777a92;
+                    line-height: 1.5;
+                }
+
+                ul {
+                    margin-left: 18px;
+                }
+            }
+        }
+
+        &__image {
+            flex: 1;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
 }
