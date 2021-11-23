@@ -138,4 +138,50 @@
             }
         }
     }
+
+
+    &__achieve {
+        display: flex;
+        margin-top: 10rem;
+        align-items: center;
+        background: #F9E1D5;
+        justify-content: space-between;
+
+        &__text {
+            flex: 1;
+            display: flex;
+            padding-top: 8.5rem;
+            align-items: flex-end;
+            justify-content: flex-start;
+
+            &__wrapper {
+                width: 80%;
+
+                h1 {
+                    font-size: 4.5rem;
+                    margin-bottom: 1.5rem;
+
+                    span {
+                        display: block;
+
+                        &:first-child {
+                            margin-bottom: 1.5rem;
+                        }
+                    }
+
+                    &+p {
+                        margin-bottom: 2.5rem;
+                    }
+                }
+            }
+        }
+
+        &__image {
+            flex: 1;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
 }
