@@ -4,7 +4,7 @@ import Contents from '../components/Home/Contents';
 import FreeUp from '../components/Home/FreeUp';
 import About from '../components/Home/About';
 import Achieve from '../components/Home/Achieve';
-// import Footer from '../components/Home/Footer';
+import Footer from '../components/Home/Footer';
 
 const Home = () => {
     return (
@@ -14,7 +14,7 @@ const Home = () => {
             <FreeUp />
             <About />
             <Achieve />
-            {/*<Footer /> */}
+            <Footer />
         </section>
     );
 };

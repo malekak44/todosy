@@ -166,7 +166,7 @@
     }
 
     &__about {
-        width: 90%;
+        width: 95%;
         display: flex;
         margin: 4rem auto;
         align-items: center;
@@ -174,8 +174,9 @@
         flex-direction: column;
 
         @include breakpoint-up(large) {
-            flex-direction: row;
+            width: 90%;
             margin: 8rem auto;
+            flex-direction: row;
         }
 
         &__text {
@@ -248,8 +249,8 @@
     &__achieve {
         display: flex;
         margin-top: 0;
-        padding: 4rem 0;
         align-items: center;
+        padding: 4rem 0 7rem;
         background: #F9E1D5;
         flex-direction: column;
         justify-content: space-between;
@@ -282,7 +283,7 @@
                     font-size: 3.5rem;
                     margin-bottom: 1.5rem;
 
-                    @include breakpoint-up(large){
+                    @include breakpoint-up(large) {
                         font-size: 4.5rem;
                         line-height: normal;
                     }
@@ -293,8 +294,8 @@
                         &:first-child {
                             margin-bottom: 0;
 
-                            @include breakpoint-up(large){
-                            margin-bottom: 1.5rem;
+                            @include breakpoint-up(large) {
+                                margin-bottom: 1.5rem;
                             }
                         }
                     }
@@ -317,10 +318,19 @@
 
     &__footer {
         display: flex;
+        text-align: center;
         align-items: center;
-        padding: 3rem 10rem 2.25rem;
+        flex-direction: column;
+        padding: 3.75rem 2rem 3rem;
         justify-content: space-between;
-        background: linear-gradient(64deg, $skyBlue, $purple);
+        background: linear-gradient(130deg, $skyBlue, $purple);
+
+        @include breakpoint-up(large) {
+            text-align: left;
+            flex-direction: row;
+            padding: 3rem 10rem 2.25rem;
+            background: linear-gradient(64deg, $skyBlue, $purple);
+        }
 
         &__logo {
             color: $white;
@@ -336,6 +346,13 @@
 
         p {
             color: $white;
+            line-height: 1.75;
+            margin: 1rem 2rem 1.5rem;
+
+            @include breakpoint-up(large) {
+                margin: 0;
+                line-height: 1.5;
+            }
         }
 
         &__social {
