@@ -50,7 +50,6 @@ const Navbar = () => {
                 <div className="navbar__links hide-for-mobile">
                     {/* <Link>Todos</Link>
                 <Link>Profile</Link> */}
-                    <Link to="/">Home</Link>
                     <Link to="/login">Login</Link>
                     <Link to="/signup">Signup</Link>
                 </div>

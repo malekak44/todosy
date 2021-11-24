@@ -9,7 +9,7 @@ const AppProvider = ({ children }) => {
 
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get(`${url}/showMe`);
+            const { data } = await axios.get(`${url}/auth/showMe`);
             setUser(data.user);
         } catch (error) {
             console.log(error);
