@@ -1,0 +1,17 @@
+.todos__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &__logo {
+        color: white;
+        font-size: 40px;
+        letter-spacing: 15px;
+    }
+
+    &__icon {
+        width: 26px;
+        margin-top: 7px;
+        cursor: pointer;
+    }
+}

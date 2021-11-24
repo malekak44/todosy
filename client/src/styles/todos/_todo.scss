@@ -1,0 +1,49 @@
+.todo {
+    &__item {
+        display: flex;
+        background: $white;
+        align-items: center;
+        padding: 20px 24px;
+        border-bottom: 1px solid #ddd;
+
+        p {
+            margin-top: 3px;
+            font-size: 17.5px;
+            color: #494c6b;
+
+            &::first-letter {
+                text-transform: capitalize;
+            }
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+
+            &.deleteBtn {
+                background: none;
+                margin-left: auto;
+                width: 1.8rem;
+                height: 1.8rem;
+                margin-left: auto;
+                background-size: cover;
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-image: var(--bg-icon-cross);
+                transition: background-image .3s ease-in-out, transform .3s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.25);
+                    background-image: var(--bg-icon-cross-hover);
+                }
+            }
+        }
+    }
+
+    &.completed {
+        p {
+            color: #d1d2da;
+            text-decoration: line-through;
+        }
+    }
+}
