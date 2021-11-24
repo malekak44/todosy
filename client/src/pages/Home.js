@@ -4,6 +4,7 @@ import Contents from '../components/Home/Contents';
 import FreeUp from '../components/Home/FreeUp';
 import About from '../components/Home/About';
 import Achieve from '../components/Home/Achieve';
+import Footer from '../components/Home/Footer';
 
 const Home = () => {
     return (
@@ -12,7 +13,8 @@ const Home = () => {
             <Contents />
             <FreeUp />
             <About />
-            <Achieve/>
+            <Achieve />
+            <Footer />
         </section>
     );
 };

@@ -144,6 +144,7 @@
         display: flex;
         margin-top: 10rem;
         align-items: center;
+        padding-bottom: 4rem;
         background: #F9E1D5;
         justify-content: space-between;
 
@@ -181,6 +182,52 @@
 
             img {
                 width: 100%;
+            }
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        padding: 3rem 10rem 2.25rem;
+        justify-content: space-between;
+        background: linear-gradient(64deg, $skyBlue, $purple);
+
+        &__logo {
+            color: $white;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: $purple;
+            }
+        }
+
+        p {
+            color: $white;
+        }
+
+        &__social {
+            svg {
+                width: 22px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                path {
+                    fill: $white;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 1.5rem;
+                }
+
+                &:hover {
+                    path {
+                        fill: $skyBlue;
+                    }
+                }
             }
         }
     }
