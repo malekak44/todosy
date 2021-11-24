@@ -9,6 +9,4 @@ const getQuote = async (req, res) => {
     res.status(StatusCodes.OK).json({ quote: singleQuote.quote });
 }
 
-module.exports = {
-    getQuote,
-}
+module.exports = getQuote;

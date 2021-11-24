@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import loginImg from '../assets/login-img.jpg';
 import { useNavigate, useLocation } from 'react-router';
@@ -7,12 +7,18 @@ import { useGlobalContext } from '../context/AppContext';
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { login } = useGlobalContext();
+    const { user, login } = useGlobalContext();
     const [values, setValues] = useState({
         email: '',
         password: '',
     });
     const from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (user) {
+            return navigate('/todos', { replace: true });
+        }
+    }, [navigate, user]);
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });

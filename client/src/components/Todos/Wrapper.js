@@ -1,7 +1,8 @@
 // import Loader from './Loader';
 // usestore
-import InnerList from './InnerList';
+import Guide from './Guide';
 import Filter from './Filter';
+import InnerList from './InnerList';
 import React, { useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 // import EmptyList
@@ -50,23 +51,26 @@ const Wrapper = () => {
 
 
     return (
-        <section className="todos__wrapper">
-            <DragDropContext onDragEnd={handleDragEnd}>
-                <Droppable droppableId="droppable">
-                    {(provided, snapshot) => (
-                        <div
-                            className={`todo__list ${snapshot.isDraggingOver ? 'dragging' : ''}`}
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                        >
-                            <InnerList todos={todos} />
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-            </DragDropContext>
-            <Filter />
-        </section>
+        <>
+            <section className="todos__wrapper">
+                <DragDropContext onDragEnd={handleDragEnd}>
+                    <Droppable droppableId="droppable">
+                        {(provided, snapshot) => (
+                            <div
+                                className={`todo__list ${snapshot.isDraggingOver ? 'dragging' : ''}`}
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                            >
+                                <InnerList todos={todos} />
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
+                <Filter />
+            </section>
+            <Guide />
+        </>
     );
 };
 

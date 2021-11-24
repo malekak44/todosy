@@ -1,11 +1,12 @@
 import axios from "axios";
 import { url } from "../utils/url";
 import React, { createContext, useContext, useState, useEffect } from "react";
+axios.defaults.withCredentials = true;
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-    const [user, setUser] = useState({ name: 'Steve' });
+    const [user, setUser] = useState(null);
 
     const fetchUser = async () => {
         try {
@@ -28,7 +29,7 @@ const AppProvider = ({ children }) => {
 
     const login = async (user, callback) => {
         try {
-            const { data } = await axios.post(`${url}/auth/login`, user);
+            const { data } = await axios.post(`${url}/auth/login`, user, { withCredentials: true });
             setUser(data.user);
             await callback();
         } catch (error) {

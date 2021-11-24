@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-    getQuote,
-} = require('../controllers/data');
+const getQuote = require('../controllers/quote');
 
 router
-    .route('/quote')
+    .route('/')
     .get(getQuote);
 
 module.exports = router;

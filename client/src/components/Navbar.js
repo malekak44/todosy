@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import quoteLeft from '../assets/quote-left.png';
 import quoteRight from '../assets/quote-right.png';
 import React, { useEffect, useState } from 'react';
+import { useGlobalContext } from '../context/AppContext';
 import { url } from '../utils/url';
-const quoteUrl = `${url}/data/quote`;
+const quoteUrl = `${url}/quote`;
 
 const Navbar = () => {
+    const { user } = useGlobalContext();
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-    const [quote, setQuote] = useState('Life isn’t about getting and having, it’s about giving and being.');
+    const [quote, setQuote] = useState('');
 
     useEffect(() => {
         axios.get(quoteUrl)
@@ -31,7 +33,7 @@ const Navbar = () => {
                 className={isNavbarOpen ? 'overlay has-fade fade-in' : 'overlay has-fade fade-out'}
             ></div>
             <nav>
-                <Link to="/" className="navbar__logo">
+                <Link to={user ? '/todos' : '/'} className="navbar__logo">
                     Todosy
                 </Link>
                 <div
@@ -42,24 +44,38 @@ const Navbar = () => {
                     <span></span>
                     <span></span>
                 </div>
-                <div className="navbar__quote hide-for-mobile">
+                <div
+                    className={`navbar__quote hide-for-mobile ${quote ? '' : 'has-fade'}`}
+                >
                     <img src={quoteLeft} alt="quote-left" />
                     <p>{quote}</p>
                     <img src={quoteRight} alt="quote-right" />
                 </div>
                 <div className="navbar__links hide-for-mobile">
-                    {/* <Link>Todos</Link>
-                <Link>Profile</Link> */}
-                    <Link to="/login">Login</Link>
-                    <Link to="/signup">Signup</Link>
+                    {user ?
+                        <>
+                            <Link to="/todos">Todos</Link>
+                            <Link to="profile">Profile</Link>
+                        </> : <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/signup">Signup</Link>
+                        </>
+                    }
                 </div>
             </nav>
             <div
                 className={isNavbarOpen ? 'navbar__menu has-fade fade-in' : 'navbar__menu has-fade fade-out'}
             >
-                <Link to="/">Home</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
+                {user ?
+                    <>
+                        <Link to="/todos">Todos</Link>
+                        <Link to="profile">Profile</Link>
+                    </> : <>
+                        <Link to="/">Home</Link>
+                        <Link to="/login">Login</Link>
+                        <Link to="/signup">Signup</Link>
+                    </>
+                }
             </div>
         </section>
     );

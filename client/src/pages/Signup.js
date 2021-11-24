@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import signupImg from '../assets/signup-img.jpg';
 import { useLocation, useNavigate } from 'react-router';
@@ -7,13 +7,19 @@ import { useGlobalContext } from '../context/AppContext';
 const Signup = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { signup } = useGlobalContext();
+    const { user, signup } = useGlobalContext();
     const [values, setValues] = useState({
         name: '',
         email: '',
         password: '',
     });
     let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (user) {
+            return navigate('/todos', { replace: true });
+        }
+    }, [navigate, user]);
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
