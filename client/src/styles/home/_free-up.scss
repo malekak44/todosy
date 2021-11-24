@@ -1,0 +1,39 @@
+.home__free-up {
+    margin-top: -5px;
+    padding: 6rem 1rem;
+    text-align: center;
+    border-top: 2px solid $white;
+
+    @include breakpoint-up(large) {
+        padding: 8rem 0;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 4rem;
+        line-height: 1.5;
+
+        @include breakpoint-up(large) {
+            line-height: normal;
+            margin: 2rem auto;
+        }
+    }
+
+    p {
+        width: 80%;
+        margin: 1.5rem auto 3rem;
+
+        @include breakpoint-up(large) {
+            width: 45%;
+            margin: 0 auto 3rem;
+        }
+    }
+
+    img {
+        width: 100%;
+
+        @include breakpoint-up(large) {
+            width: auto;
+        }
+    }
+}

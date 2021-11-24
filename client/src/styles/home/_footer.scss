@@ -1,0 +1,61 @@
+.home__footer {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3.75rem 2rem 3rem;
+    justify-content: space-between;
+    background: linear-gradient(130deg, $skyBlue, $purple);
+
+    @include breakpoint-up(large) {
+        text-align: left;
+        flex-direction: row;
+        padding: 3rem 10rem 2.25rem;
+        background: linear-gradient(64deg, $skyBlue, $purple);
+    }
+
+    &__logo {
+        color: $white;
+        cursor: pointer;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: $purple;
+        }
+    }
+
+    p {
+        color: $white;
+        line-height: 1.75;
+        margin: 1rem 2rem 1.5rem;
+
+        @include breakpoint-up(large) {
+            margin: 0;
+            line-height: 1.5;
+        }
+    }
+
+    &__social {
+        svg {
+            width: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            path {
+                fill: $white;
+            }
+
+            &:not(:last-child) {
+                margin-right: 1.5rem;
+            }
+
+            &:hover {
+                path {
+                    fill: $skyBlue;
+                }
+            }
+        }
+    }
+}
