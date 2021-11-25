@@ -1,15 +1,13 @@
-// import Loader from './Loader';
-// import EmptyList
 import React from 'react';
 import Guide from './Guide';
 import Filter from './Filter';
 import InnerList from './InnerList';
+import EmptyList from './EmptyList';
 import { useGlobalContext } from '../../context/AppContext';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const Wrapper = () => {
     const { todos, setTodos } = useGlobalContext();
-    // const [isError, setIsError] = useState(false);
 
     const reorder = (list, startIndex, endIndex) => {
         const result = Array.from(list);
@@ -31,10 +29,11 @@ const Wrapper = () => {
 
         setTodos(updatedTodos);
     }
-
-    // if(loading) return <Loader/>
-    // if(isError) return <EmptyList isError={true}/>
-    // if(todos.length ===0) return <EmptyList/>
+    
+    if (todos.length === 0) {
+        console.log('empyt')
+        return <EmptyList />
+    }
 
     return (
         <>
