@@ -8,12 +8,14 @@ const {
     getAllTodos,
     getSingleTodo,
     getTodayTodos,
+    deleteCompleted,
 } = require('../controllers/todos');
 
 router
     .route('/')
     .post(createTodo)
-    .get(getAllTodos);
+    .get(getAllTodos)
+    .delete(deleteCompleted);
 
 router
     .route('/today')

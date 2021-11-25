@@ -1,6 +1,7 @@
 import Todo from './Todo';
 import React, { memo } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import { useGlobalContext } from '../../context/AppContext';
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: "none",
@@ -8,7 +9,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 })
 
 const InnerList = memo(function InnerList({ todos }) {
-  const filter = '';
+  const { filter } = useGlobalContext();
 
   const todosFilter = (todo) => {
     if (filter === 'active') return !todo.completed;

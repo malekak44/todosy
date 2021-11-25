@@ -35,6 +35,13 @@ const deleteTodo = async (req, res) => {
     res.status(StatusCodes.OK).json({ msg: 'todo deleted successfully' });
 }
 
+const deleteCompleted = async (req, res) => {
+    await Todo.deleteMany({ completed: true });
+    res
+        .status(StatusCodes.OK)
+        .json({ msg: 'completed todos deleted successfully' });
+}
+
 const getAllTodos = async (req, res) => {
     const todos = await Todo.find({ user: req.user.userId });
     res.status(StatusCodes.OK).json({ todos, count: todos.length });
@@ -70,4 +77,5 @@ module.exports = {
     getAllTodos,
     getSingleTodo,
     getTodayTodos,
+    deleteCompleted,
 }

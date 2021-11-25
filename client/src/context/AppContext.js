@@ -8,8 +8,9 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [quote, setQuote] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
     const [todos, setTodos] = useState([]);
+    const [filter, setFilter] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchQuote = async () => {
         try {
@@ -92,6 +93,14 @@ const AppProvider = ({ children }) => {
         }
     }
 
+    const clearCompleted = async () => {
+        try {
+            await axios.delete(`${url}/todos`, { withCredentials: true });
+            await getAllTodos();
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
         fetchUser();
@@ -105,15 +114,18 @@ const AppProvider = ({ children }) => {
             user,
             quote,
             todos,
+            filter,
+            isLoading,
             login,
             logout,
             signup,
             setTodos,
-            isLoading,
+            setFilter,
             fetchUser,
             createTodo,
             updateTodo,
             deleteTodo,
+            clearCompleted,
         }}>
             {children}
         </AppContext.Provider>
