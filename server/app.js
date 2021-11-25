@@ -10,8 +10,16 @@ const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./db/connect');
 const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth');
+const userRouter = require('./routes/user');
 const quoteRouter = require('./routes/quote');
 const todosRouter = require('./routes/todos');
+const fileUpload = require('express-fileupload');
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API,
+    api_secret: process.env.CLOUD_API_SECRET
+});
 const notFound = require('./middleware/not-found');
 const authenticateUser = require('./middleware/auth');
 const errorHandler = require('./middleware/error-handler');
@@ -31,7 +39,9 @@ app.use(mongoSanitize());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(fileUpload({ useTempFiles: true }));
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/user', userRouter);
 app.use('/api/v1/quote', quoteRouter);
 app.use('/api/v1/todos', authenticateUser, todosRouter);
 app.use(errorHandler);

@@ -23,6 +23,12 @@ const UserSchema = new mongoose.Schema({
         minlength: 6,
         required: [true, 'Please provide password'],
     },
+    location: {
+        type: String,
+    },
+    image: {
+        type: String,
+    },
 }, { timestamps: true });
 
 UserSchema.pre('save', async function () {

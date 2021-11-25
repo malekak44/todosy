@@ -52,8 +52,15 @@ const logout = async (req, res) => {
 const getUser = async (req, res) => {
     const userId = req.user.userId;
     const user = await User.findOne({ _id: userId });
+    const filteredUser = {
+        _id: userId,
+        name: user.name,
+        email: user.email,
+        image: user.image,
+        location: user.location
+    };
 
-    res.status(StatusCodes.OK).json({ user: user });
+    res.status(StatusCodes.OK).json({ user: filteredUser });
 }
 
 module.exports = {

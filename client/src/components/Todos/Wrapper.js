@@ -31,8 +31,7 @@ const Wrapper = () => {
     }
     
     if (todos.length === 0) {
-        console.log('empyt')
-        return <EmptyList />
+        return <EmptyList />;
     }
 
     return (

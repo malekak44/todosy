@@ -55,6 +55,15 @@ const AppProvider = ({ children }) => {
         setUser(null);
     }
 
+    const updateUser = async (payload) => {
+        try {
+            const { data } = await axios.patch(`${url}/user/update`, payload, { withCredentials: true });
+            setUser(data.user);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const getAllTodos = async () => {
         try {
             const { data } = await axios.get(`${url}/todos`, { withCredentials: true });
@@ -121,6 +130,7 @@ const AppProvider = ({ children }) => {
             setTodos,
             setFilter,
             fetchUser,
+            updateUser,
             createTodo,
             updateTodo,
             deleteTodo,
