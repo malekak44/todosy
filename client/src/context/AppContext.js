@@ -9,10 +9,11 @@ const AppProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [quote, setQuote] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [todos, setTodos] = useState([]);
 
     const fetchQuote = async () => {
         try {
-            const { data } = await axios.get(`${url}/quote`, { withCredentials: true });
+            const { data } = await axios.get(`${url}/quote`);
             setQuote(data.quote);
         } catch (error) {
             console.log(error);
@@ -33,7 +34,7 @@ const AppProvider = ({ children }) => {
 
     const signup = async (user, callback) => {
         try {
-            const { data } = await axios.post(`${url}/auth/register`, user);
+            const { data } = await axios.post(`${url}/auth/register`, user, { withCredentials: true });
             setUser(data.user);
             await callback();
         } catch (error) {
@@ -55,9 +56,47 @@ const AppProvider = ({ children }) => {
         setUser(null);
     }
 
+    const getAllTodos = async () => {
+        try {
+            const { data } = await axios.get(`${url}/todos`, { withCredentials: true });
+            setTodos(data.todos);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const createTodo = async (payload) => {
+        try {
+            await axios.post(`${url}/todos`, payload, { withCredentials: true });
+            await getAllTodos();
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const updateTodo = async (id, payload) => {
+        try {
+            await axios.patch(`${url}/todos/${id}`, payload, { withCredentials: true });
+            await getAllTodos();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const deleteTodo = async (id) => {
+        try {
+            await axios.delete(`${url}/todos/${id}`, { withCredentials: true });
+            await getAllTodos();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
     useEffect(() => {
         fetchUser();
         fetchQuote();
+        getAllTodos();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -65,11 +104,16 @@ const AppProvider = ({ children }) => {
         <AppContext.Provider value={{
             user,
             quote,
+            todos,
             login,
             logout,
             signup,
+            setTodos,
             isLoading,
             fetchUser,
+            createTodo,
+            updateTodo,
+            deleteTodo,
         }}>
             {children}
         </AppContext.Provider>

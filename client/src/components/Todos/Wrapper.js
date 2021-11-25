@@ -1,26 +1,15 @@
 // import Loader from './Loader';
-// usestore
+// import EmptyList
+import React from 'react';
 import Guide from './Guide';
 import Filter from './Filter';
 import InnerList from './InnerList';
-import React, { useState } from 'react';
+import { useGlobalContext } from '../../context/AppContext';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-// import EmptyList
 
 const Wrapper = () => {
-    const [todos, setTodos] = useState([{
-        id: 1,
-        title: 'Go outside'
-    }, {
-        id: 2,
-        title: 'Leave the place'
-    }, {
-        id: 3,
-        title: 'Set goals for life'
-    }]);
-
+    const { todos, setTodos } = useGlobalContext();
     // const [isError, setIsError] = useState(false);
-    // todos usestore settodos
 
     const reorder = (list, startIndex, endIndex) => {
         const result = Array.from(list);
@@ -43,12 +32,9 @@ const Wrapper = () => {
         setTodos(updatedTodos);
     }
 
-
     // if(loading) return <Loader/>
     // if(isError) return <EmptyList isError={true}/>
     // if(todos.length ===0) return <EmptyList/>
-
-
 
     return (
         <>

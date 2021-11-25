@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
-// useStore
+import { useGlobalContext } from '../../context/AppContext';
 
 const Todo = ({ todo }) => {
-  // const todos = useStore((state) => state.todos)
-  // const setTodos = useStore((state) => state.setTodos)
+  let isCompleted;
+  const todoId = todo._id;
+  const [title, setTitle] = useState(todo.title);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const { deleteTodo, updateTodo } = useGlobalContext();
 
-  const [todos, setTodos] = useState([]);
-
-  const handleRemove = () => {
-    const todoId = todo.id;
-    setTodos(todos.filter(oldTodo => oldTodo.id !== todoId))
+  if (todo.completed) {
+    isCompleted = false;
+  } else {
+    isCompleted = true;
   }
 
   const handleComplete = () => {
-    const todoId = todo.id;
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === todoId) {
-        return { ...todo, completed: !todo.completed }
-      }
-      return todo;
+    updateTodo(todoId, {
+      completed: isCompleted
     });
-    setTodos(updatedTodos);
+  }
+
+  const handleChange = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsUpdating(false);
+    updateTodo(todoId, {
+      title: title
+    });
   }
 
   return (
@@ -29,16 +38,29 @@ const Todo = ({ todo }) => {
         aria-pressed="true"
         onClick={handleComplete}
         aria-label="complete-todo"
-        className={`checkbox ${todo.completed ? 'completed' : ''}`}
+        className={`checkbox ${todo.completed ? 'completed' : ''} ${isUpdating ? 'focusing' : ''}`}
       ></button>
-      <p>{todo.title}</p>
+      {isUpdating ?
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={title}
+            onChange={handleChange}
+            className="todos__input"
+            onBlur={() => setIsUpdating(false)}
+          />
+        </form> :
+        <p
+          onDoubleClick={() => setIsUpdating(true)}
+        >{title}</p>
+      }
       <button
         aria-pressed="true"
         className="deleteBtn"
-        onClick={handleRemove}
         aria-label="remove-todo"
+        onClick={() => deleteTodo(todoId)}
       ></button>
-    </div>
+    </div >
   );
 };
 

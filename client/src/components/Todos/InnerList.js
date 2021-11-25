@@ -1,6 +1,5 @@
-import React, { memo } from 'react';
 import Todo from './Todo';
-// import store
+import React, { memo } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 const getItemStyle = (isDragging, draggableStyle) => ({
@@ -9,7 +8,6 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 })
 
 const InnerList = memo(function InnerList({ todos }) {
-  // const filter = usestore
   const filter = '';
 
   const todosFilter = (todo) => {
@@ -21,7 +19,7 @@ const InnerList = memo(function InnerList({ todos }) {
   return todos
     .filter(todosFilter)
     .map((todo, index) => (
-      <Draggable key={todo.id} draggableId={`todo-${todo.id}`} index={index}>
+      <Draggable key={todo._id} draggableId={`todo-${todo._id}`} index={index}>
         {(provided, snapshot) => (
           <div
             className={`todo ${todo.completed ? 'completed' : ''}`}
@@ -33,7 +31,7 @@ const InnerList = memo(function InnerList({ todos }) {
               provided.draggableProps.style
             )}
           >
-            <Todo key={todo.id} todo={todo} />
+            <Todo key={todo._id} todo={todo} />
           </div>
         )}
       </Draggable>

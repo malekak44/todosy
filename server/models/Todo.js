@@ -6,11 +6,6 @@ const TodoSchema = new mongoose.Schema({
         trim: true,
         required: [true, 'Please provide todo title'],
     },
-    description: {
-        type: String,
-        trim: true,
-        maxlength: [50, 'Description cannot be more than 50 characters'],
-    },
     deadline: {
         type: Date,
         default: new Date().toDateString(),

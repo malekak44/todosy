@@ -6,6 +6,15 @@
         padding: 20px 24px;
         border-bottom: 1px solid #ddd;
 
+        input {
+            border: none;
+            outline: none;
+            margin-top: 3px;
+            color: #181b49;
+            font-size: 17.5px;
+            font-family: inherit;
+        }
+
         p {
             margin-top: 3px;
             font-size: 17.5px;
