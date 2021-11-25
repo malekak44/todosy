@@ -1,0 +1,12 @@
+.todos {
+    margin: 77px auto;
+    max-width: 54rem;
+
+    @import '../todos/header';
+    @import '../todos/form';
+    @import '../todos/wrapper';
+    @import '../todos/todo';
+    @import '../todos/filter';
+    @import '../todos/guide';
+    @import '../todos/empty-list';
+}

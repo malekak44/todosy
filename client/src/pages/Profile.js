@@ -5,9 +5,11 @@ const Profile = () => {
     const { user } = useGlobalContext();
 
     return (
-        <div>
-            <h1>{user.name}</h1>
-        </div>
+        <section className="profile">
+            <form>
+
+            </form>
+        </section>
     );
 };
 
