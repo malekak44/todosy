@@ -1,10 +1,15 @@
 .login,
 .signup {
-    max-width: 54rem;
+    max-width: 90%;
+    margin: 6rem auto;
     background: $white;
-    margin: 12rem auto;
     border-radius: 0.5rem;
     box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+
+    @include breakpoint-up(large) {
+        max-width: 54rem;
+        margin: 12rem auto;
+    }
 
     img {
         width: 100%;
@@ -14,7 +19,11 @@
     }
 
     &__wrapper {
-        padding: 3rem 4rem;
+        padding: 3rem;
+
+        @include breakpoint-up(large) {
+            padding: 3rem 4rem;
+        }
 
         h3 {
             font-weight: 400;

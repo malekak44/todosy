@@ -20,6 +20,7 @@ const Navbar = () => {
     return (
         <section className={isNavbarOpen ? 'navbar open' : 'navbar'}>
             <div
+                onClick={() => setIsNavbarOpen(false)}
                 className={isNavbarOpen ? 'overlay has-fade fade-in' : 'overlay has-fade fade-out'}
             ></div>
             <nav>
@@ -61,9 +62,9 @@ const Navbar = () => {
                         <Link to="/today">Today</Link>
                         <Link to="profile">Profile</Link>
                     </> : <>
-                        <Link to="/">Home</Link>
-                        <Link to="/login">Login</Link>
-                        <Link to="/signup">Signup</Link>
+                        <Link to="/" onClick={() => setIsNavbarOpen(false)}>Home</Link>
+                        <Link to="/login" onClick={() => setIsNavbarOpen(false)}>Login</Link>
+                        <Link to="/signup" onClick={() => setIsNavbarOpen(false)}>Signup</Link>
                     </>
                 }
             </div>
