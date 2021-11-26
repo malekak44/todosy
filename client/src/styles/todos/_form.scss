@@ -1,19 +1,28 @@
 .todos__form {
     border-radius: 5px;
     background: #fff;
-    margin: 42px auto 0;
-    padding: 20px 24px;
+    margin: 38px auto 0;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
 
+    @include breakpoint-up(large) {
+        padding: 20px 24px;
+        margin: 42px auto 0;
+    }
+
     input {
         border: none;
         outline: none;
-        font-size: 18px;
+        font-size: 13.5px;
         margin-left: 2px;
         font-family: inherit;
         letter-spacing: -.25px;
+
+        @include breakpoint-up(large) {
+            font-size: 18px;
+        }
 
         &::placeholder {
             color: #9394a5;
@@ -24,8 +33,12 @@
         }
 
         &[type=date] {
-            width: 32%;
+            width: 30%;
             margin-left: auto;
+
+            @include breakpoint-up(large) {
+                width: 32%;
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
     transition: all 0.3s ease-in-out;
     background-color: $veryLightGrayishBlue;
 
-    @media (min-width: 768px) {
+    @include breakpoint-up(large) {
         width: 2.4rem;
         height: 2.4rem;
         margin-right: 2.2rem;
