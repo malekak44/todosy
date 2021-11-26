@@ -1,6 +1,11 @@
 .todos {
-    margin: 77px auto;
-    max-width: 54rem;
+    max-width: 87.5%;
+    margin: 5.5rem auto;
+
+    @include breakpoint-up(large) {
+        max-width: 54rem;
+        margin: 7.5rem auto;
+    }
 
     @import '../todos/header';
     @import '../todos/form';

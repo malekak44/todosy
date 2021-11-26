@@ -19,8 +19,8 @@ const Todos = () => {
             {!user && <Navigate to="/login" />}
             <section className="todos">
                 <Header title="TODOS" />
-                <Form />
-                <Wrapper />
+                {/* <Form /> */}
+                {/* <Wrapper /> */}
             </section>
         </>
     );

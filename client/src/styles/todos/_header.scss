@@ -5,13 +5,23 @@
 
     &__logo {
         color: white;
-        font-size: 40px;
-        letter-spacing: 15px;
+        font-size: 27px;
+        letter-spacing: 12px;
+
+        @include breakpoint-up(large) {
+            font-size: 40px;
+            letter-spacing: 15px;
+        }
     }
 
     &__icon {
-        width: 26px;
-        margin-top: 7px;
+        width: 21px;
+        margin-top: 0;
         cursor: pointer;
+
+        @include breakpoint-up(large) {
+            width: 26px;
+            margin-top: 7px;
+        }
     }
 }

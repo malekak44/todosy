@@ -18,9 +18,11 @@ html {
 }
 
 body {
+    height: 120vh;
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
     background: url('../assets//bg-mobile-light.jpg'), $veryLightGray;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: 50% 5rem;
 
