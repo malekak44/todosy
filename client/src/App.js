@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './pages/Home';
 import Todos from './pages/Todos';
+import Today from './pages/Today';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
@@ -22,10 +23,11 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/todos" element={<Todos />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/todos" element={<Todos />} />
+        <Route path="/today" element={<Today />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

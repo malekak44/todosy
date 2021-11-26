@@ -44,8 +44,8 @@ const Navbar = () => {
                 <div className="navbar__links hide-for-mobile">
                     {user ?
                         <>
-                            <Link to="/todos">Todos</Link>
-                            <Link to="profile">Profile</Link>
+                            <Link to="/today">Today</Link>
+                            <Link to="/profile">Profile</Link>
                         </> : <>
                             <Link to="/login">Login</Link>
                             <Link to="/signup">Signup</Link>
@@ -58,7 +58,7 @@ const Navbar = () => {
             >
                 {user ?
                     <>
-                        <Link to="/todos">Todos</Link>
+                        <Link to="/today">Today</Link>
                         <Link to="profile">Profile</Link>
                     </> : <>
                         <Link to="/">Home</Link>

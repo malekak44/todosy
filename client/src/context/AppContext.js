@@ -10,6 +10,7 @@ const AppProvider = ({ children }) => {
     const [quote, setQuote] = useState('');
     const [todos, setTodos] = useState([]);
     const [filter, setFilter] = useState('');
+    const [isToday, setIsToday] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     const fetchQuote = async () => {
@@ -73,10 +74,23 @@ const AppProvider = ({ children }) => {
         }
     }
 
+    const getTodayTodos = async () => {
+        try {
+            const { data } = await axios.get(`${url}/todos/today`, { withCredentials: true });
+            setTodos(data.todos);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const createTodo = async (payload) => {
         try {
             await axios.post(`${url}/todos`, payload, { withCredentials: true });
-            await getAllTodos();
+            if (isToday) {
+                await getTodayTodos();
+            } else {
+                await getAllTodos();
+            }
         } catch (error) {
             console.log(error)
         }
@@ -85,7 +99,11 @@ const AppProvider = ({ children }) => {
     const updateTodo = async (id, payload) => {
         try {
             await axios.patch(`${url}/todos/${id}`, payload, { withCredentials: true });
-            await getAllTodos();
+            if (isToday) {
+                await getTodayTodos();
+            } else {
+                await getAllTodos();
+            }
         } catch (error) {
             console.log(error);
         }
@@ -94,7 +112,11 @@ const AppProvider = ({ children }) => {
     const deleteTodo = async (id) => {
         try {
             await axios.delete(`${url}/todos/${id}`, { withCredentials: true });
-            await getAllTodos();
+            if (isToday) {
+                await getTodayTodos();
+            } else {
+                await getAllTodos();
+            }
         } catch (error) {
             console.log(error);
         }
@@ -103,7 +125,11 @@ const AppProvider = ({ children }) => {
     const clearCompleted = async () => {
         try {
             await axios.delete(`${url}/todos`, { withCredentials: true });
-            await getAllTodos();
+            if (isToday) {
+                await getTodayTodos();
+            } else {
+                await getAllTodos();
+            }
         } catch (error) {
             console.log(error);
         }
@@ -112,7 +138,6 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         fetchUser();
         fetchQuote();
-        getAllTodos();
         setIsLoading(false);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -123,17 +148,21 @@ const AppProvider = ({ children }) => {
             quote,
             todos,
             filter,
+            isToday,
             isLoading,
             login,
             logout,
             signup,
             setTodos,
             setFilter,
+            setIsToday,
             fetchUser,
             updateUser,
             createTodo,
             updateTodo,
             deleteTodo,
+            getAllTodos,
+            getTodayTodos,
             clearCompleted,
         }}>
             {children}

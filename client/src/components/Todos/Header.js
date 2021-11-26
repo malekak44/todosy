@@ -10,7 +10,7 @@ const getLocalStorage = () => {
     }
 }
 
-const Header = () => {
+const Header = ({ title }) => {
     const [darkTheme, setDarkTheme] = useState(getLocalStorage());
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const Header = () => {
 
     return (
         <div className="todos__header">
-            <h1 className="todos__header__logo">TODO</h1>
+            <h1 className="todos__header__logo">{title}</h1>
             <img
                 src={darkTheme ? sun : moon}
                 alt="theme-icon"

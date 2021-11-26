@@ -2,27 +2,35 @@ import React, { useState } from 'react';
 import { useGlobalContext } from '../../context/AppContext';
 
 const Form = () => {
-    const [value, setValue] = useState('');
-    const { user, createTodo } = useGlobalContext();
+    const [values, setValues] = useState({
+        title: '',
+        deadline: ''
+    });
     const [isAdding, setIsAdding] = useState(false);
     const [isFocusing, setIsFocusing] = useState(false);
+    const { user, createTodo, isToday } = useGlobalContext();
 
     const handleChange = (e) => {
-        setValue(e.target.value);
-    }
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsAdding(true);
 
-        if (value !== '' || value !== ' ') {
+        if (values.title !== '' || values.title !== ' ') {
             const todo = {
                 user: user._id,
-                title: value,
-                deadline: Date.now(),
+                title: values.title,
+                deadline: isToday
+                    ? new Date()
+                    : values.deadline,
             }
             createTodo(todo);
-            setValue('');
+            setValues({
+                title: '',
+                deadline: ''
+            });
             setIsAdding(false);
         }
     }
@@ -32,14 +40,24 @@ const Form = () => {
             <div className={isFocusing ? "checkbox focusing" : "checkbox"}></div>
             <input
                 type="text"
-                value={value}
+                name="title"
                 autoComplete="off"
                 disabled={isAdding}
+                value={values.title}
                 onChange={handleChange}
                 onFocus={() => setIsFocusing(true)}
                 onBlur={() => setIsFocusing(false)}
                 placeholder={`${isAdding ? "Adding..." : "Create a new todo..."}`}
             />
+            {!isToday && (
+                <input
+                    type="date"
+                    name="deadline"
+                    value={values.deadline}
+                    onChange={handleChange}
+                    min={new Date().toISOString().slice(0, 10)}
+                />
+            )}
         </form>
     );
 };

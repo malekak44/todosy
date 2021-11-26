@@ -6,7 +6,11 @@ const Todo = ({ todo }) => {
   const todoId = todo._id;
   const [title, setTitle] = useState(todo.title);
   const [isUpdating, setIsUpdating] = useState(false);
-  const { deleteTodo, updateTodo } = useGlobalContext();
+  const { isToday, deleteTodo, updateTodo } = useGlobalContext();
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const deadlineDate = new Date(todo.deadline).getDate();
+  const deadlineMonth = months[new Date(todo.deadline).getMonth()];
+  const deadline = `${deadlineDate} ${deadlineMonth}`;
 
   if (todo.completed) {
     isCompleted = false;
@@ -54,6 +58,9 @@ const Todo = ({ todo }) => {
           onDoubleClick={() => setIsUpdating(true)}
         >{title}</p>
       }
+      {!isToday && (
+        <p className="deadline">{deadline}</p>
+      )}
       <button
         aria-pressed="true"
         className="deleteBtn"
