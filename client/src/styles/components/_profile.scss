@@ -1,11 +1,18 @@
 .profile {
-    display: grid;
+    display: block;
     grid-template-columns: 1fr 1.75fr;
-    max-width: 80rem;
+    max-width: 90%;
     background: $white;
-    margin: 12rem auto;
+    margin: 5.5rem auto;
     border-radius: 0.5rem;
     box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+    grid-auto-flow: row;
+
+    @include breakpoint-up(large) {
+        display: grid;
+        max-width: 80rem;
+
+    }
 
     .active-label {
         display: flex;
@@ -20,11 +27,19 @@
 
     &__picture {
         display: flex;
+        padding: 4rem 0;
         align-items: center;
         justify-content: center;
+        border-bottom-left-radius: 0;
         border-top-left-radius: 0.5rem;
-        border-bottom-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
         background-image: linear-gradient(230deg, $skyBlue, $purple);
+
+        @include breakpoint-up(large) {
+            padding: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0.5rem;
+        }
 
         &__wrapper {
             display: flex;
@@ -95,7 +110,11 @@
     }
 
     form {
-        padding: 3rem 4rem;
+        padding: 3rem;
+
+        @include breakpoint-up(large) {
+            padding: 3rem 4rem;
+        }
 
         .form-group {
             display: flex;
