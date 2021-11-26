@@ -2,6 +2,27 @@
     padding: 4px 0;
     background: $white;
     border-radius: 5px;
-    margin: 24px auto 0;
+    margin: 20px auto 0;
     box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+
+    @include breakpoint-up(large) {
+        margin: 24px auto 0;
+    }
+
+    &+.filter__buttons {
+        margin: 20px 0;
+        padding: 18px 0;
+        background: $white;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+
+        .filter__btn {
+            font-size: 1.5rem;
+        }
+
+        @include breakpoint-up(large) {
+            display: none;
+        }
+    }
 }

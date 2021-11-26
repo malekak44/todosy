@@ -3,23 +3,37 @@
         display: grid;
         background: $white;
         align-items: center;
-        padding: 20px 24px;
+        padding: 16px 20px;
         border-bottom: 1px solid #ddd;
-        grid-template-columns: 0.5fr 5fr 1fr 0.5fr;
+        grid-template-columns: 0.5fr 4fr 1fr 0.5fr;
+
+        @include breakpoint-up(large) {
+            padding: 20px 24px;
+            grid-template-columns: 0.5fr 5fr 1fr 0.5fr;
+        }
 
         input {
             border: none;
             outline: none;
             margin-top: 3px;
             color: #181b49;
-            font-size: 17.5px;
+            font-size: 14px;
             font-family: inherit;
+
+            @include breakpoint-up(large) {
+                font-size: 17.5px;
+            }
+
         }
 
         p {
             margin-top: 3px;
-            font-size: 17.5px;
+            font-size: 14px;
             color: #494c6b;
+
+            @include breakpoint-up(large) {
+                font-size: 17.5px;
+            }
 
             &::first-letter {
                 text-transform: capitalize;
@@ -36,14 +50,19 @@
 
             &.deleteBtn {
                 background: none;
-                width: 1.8rem;
-                height: 1.8rem;
+                width: 1.25rem;
+                height: 1.5rem;
                 justify-self: flex-end;
                 background-size: cover;
                 background-position: 50%;
                 background-repeat: no-repeat;
                 background-image: var(--bg-icon-cross);
                 transition: background-image .3s ease-in-out, transform .3s ease-in-out;
+
+                @include breakpoint-up(large) {
+                    width: 1.8rem;
+                    height: 1.8rem;
+                }
 
                 &:hover {
                     transform: scale(1.25);

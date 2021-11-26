@@ -1,30 +1,18 @@
 import React from 'react';
+import FilterButtons from './FilterButtons'; 
 import { useGlobalContext } from '../../context/AppContext';
 
 const Filter = () => {
-    const { todos, filter, setFilter, clearCompleted } = useGlobalContext();
+    const { todos, clearCompleted } = useGlobalContext();
     const itemsLeft = todos.filter(todo => !todo.completed).length;
 
     return (
         <div className="todos__filter">
             <p className="status">{itemsLeft} items left</p>
-            <div className="filter__buttons">
-                <button
-                    onClick={() => setFilter('')}
-                    className={filter === '' ? 'active' : ''}
-                >All</button>
-                <button
-                    onClick={() => setFilter('active')}
-                    className={`active-btn ${filter === 'active' ? 'active' : ''}`}
-                >Active</button>
-                <button
-                    onClick={() => setFilter('completed')}
-                    className={filter === 'completed' ? 'active' : ''}
-                >Completed</button>
-            </div>
+            <FilterButtons />
             <button
                 onClick={clearCompleted}
-                className="status clear-btn"
+                className="status filter__btn clear-btn"
             >Clear Completed</button>
         </div>
     );

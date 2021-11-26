@@ -20,7 +20,7 @@ const Todos = () => {
             <section className="todos">
                 <Header title="TODOS" />
                 <Form />
-                {/* <Wrapper /> */}
+                <Wrapper />
             </section>
         </>
     );

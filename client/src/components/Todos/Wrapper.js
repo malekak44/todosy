@@ -3,6 +3,7 @@ import Guide from './Guide';
 import Filter from './Filter';
 import InnerList from './InnerList';
 import EmptyList from './EmptyList';
+import FilterButtons from './FilterButtons';
 import { useGlobalContext } from '../../context/AppContext';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
@@ -29,7 +30,7 @@ const Wrapper = () => {
 
         setTodos(updatedTodos);
     }
-    
+
     if (todos.length === 0) {
         return <EmptyList />;
     }
@@ -53,6 +54,7 @@ const Wrapper = () => {
                 </DragDropContext>
                 <Filter />
             </section>
+            <FilterButtons />
             <Guide />
         </>
     );
