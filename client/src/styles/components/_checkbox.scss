@@ -4,8 +4,8 @@
     border-radius: 50%;
     position: relative;
     margin-right: 1.2rem;
-    background-color: var(--grey-4);
-    transition: all 0.3s ease-in-out;
+    background-color: var(--checkbox);
+    transition: var(--transition) background, var(--transition) transform;
 
     @include breakpoint-up(large) {
         width: 2.4rem;
@@ -21,9 +21,9 @@
         height: 1.8rem;
         position: absolute;
         border-radius: 50%;
-        background-color: $white;
         transform: translate(-50%, -50%);
-        transition: background-color .3s ease-in-out, background-image .3s ease-in-out;
+        background-color: var(--bg-component);
+        transition: var(--transition) background-color, var(--transition) background-image;
 
         @include breakpoint-up(large) {
             width: 2.2rem;

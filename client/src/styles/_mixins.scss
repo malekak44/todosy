@@ -1,6 +1,5 @@
-@mixin body-background($device, $theme, $size, $position) {
-    background: url('../assets//bg-#{$device}-#{$theme}.jpg'),
-    $veryLightGray;
+@mixin body-background($image, $color, $size, $position) {
+    background:$image, $color;
     background-size: $size;
     background-repeat: no-repeat;
     background-position: $position;

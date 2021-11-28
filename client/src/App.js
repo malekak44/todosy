@@ -18,7 +18,9 @@ export default function App() {
     const root = document.documentElement;
     if (darkTheme) {
       root.classList.add('dark');
+      root.classList.remove('light');
     } else {
+      root.classList.add('light');
       root.classList.remove('dark');
     }
   }, [darkTheme]);

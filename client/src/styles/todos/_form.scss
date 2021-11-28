@@ -1,10 +1,12 @@
 .todos__form {
-    background: $white;
+    display: grid;
     padding: 1.6rem 2rem;
     margin: 3.8rem auto 0;
     border-radius: 0.5rem;
+    background: var(--bg-component);
     box-shadow: var(--component-shadow);
-    @include flexbox(center, flex-start);
+    grid-template-columns: 0.5fr 4fr 1.75fr;
+    transition: var(--transition) background, var(--transition) box-shadow;
 
     @include breakpoint-up(large) {
         padding: 2rem 2.4rem;
@@ -12,10 +14,12 @@
     }
 
     input {
+        width: 100%;
         border: none;
         outline: none;
+        background: none;
         font-size: 1.35rem;
-        margin-left: 0.2rem;
+        color: var(--text-1);
         font-family: inherit;
         letter-spacing: -.25px;
 
@@ -24,31 +28,48 @@
         }
 
         &::placeholder {
-            color: var(--grey-12);
+            color: var(--text-3);
         }
 
         &[type=text] {
-            width: 52%;
-
-            @media (min-width: 768px) {
-                width: 65%;
-            }
-
-            @include breakpoint-up(large) {
-                width: 56%;
-            }
+            padding: 0.1rem 0;
         }
 
         &[type=date] {
-            width: 35%;
-            margin-left: auto;
+            padding: 0;
+            position: relative;
 
-            @media (min-width: 768px) {
-                width: 25%;
+            &::after {
+                font-family: "FontAwesome";
+                font-weight: 700;
+                content: "\f073";
+                color: var(--text-1);
+                padding: 0 5px;
+                cursor: pointer;
             }
 
-            @include breakpoint-up(large) {
-                width: 32%;
+            &:hover::after {
+                color: var(--text-4);
+            }
+
+            &::-webkit-calendar-picker-indicator {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: auto;
+                height: auto;
+                color: transparent;
+                background: transparent;
+            }
+
+            &::-webkit-inner-spin-button {
+                z-index: 1;
+            }
+
+            &::-webkit-clear-button {
+                z-index: 1;
             }
         }
     }

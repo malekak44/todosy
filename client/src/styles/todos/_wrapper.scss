@@ -4,9 +4,11 @@
     &+.filter__buttons {
         margin: 2rem 0;
         padding: 1.8rem 0;
-        background: $white;
         border-radius: 0.5rem;
+        background: var(--bg-component);
         @include flexbox(center, center);
+        box-shadow: var(--component-shadow);
+        transition: var(--transition) background, var(--transition) box-shadow;
 
         .filter__btn {
             font-size: 1.5rem;

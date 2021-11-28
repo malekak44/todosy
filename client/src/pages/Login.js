@@ -11,8 +11,13 @@ const Login = () => {
         email: '',
         password: '',
     });
-    const from = location.state?.from?.pathname || "/";
     const { user, login } = useGlobalContext();
+    const [isChecked, setIsChecked] = useState(true);
+    const from = location.state?.from?.pathname || "/";
+
+    const handleCheck = () => {
+        setIsChecked(!isChecked);
+    }
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -50,7 +55,7 @@ const Login = () => {
                             </div>
                             <div className="form__group checkbox__group">
                                 <label className="checkbox__wrapper">Remember Me
-                                    <input type="checkbox" />
+                                    <input type="checkbox" checked={isChecked} onChange={handleCheck} />
                                     <span className="checkmark"></span>
                                 </label>
                                 <p>Forgot Password</p>

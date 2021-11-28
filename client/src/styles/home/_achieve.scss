@@ -29,6 +29,7 @@
             h1 {
                 line-height: 1.5;
                 font-size: 3.5rem;
+                color: var(--gray-35);
                 margin-bottom: 1.5rem;
 
                 @include breakpoint-up(large) {
@@ -53,6 +54,7 @@
                 }
 
                 &+p {
+                    color: var(--gray-52);
                     margin-bottom: 2.5rem;
                 }
             }

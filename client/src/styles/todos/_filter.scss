@@ -11,7 +11,7 @@
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 1.5rem;
-        color: var(--grey-10);
+        color: var(--text-3);
         letter-spacing: -.19px;
     }
 
@@ -43,15 +43,20 @@
         font-size: 1.4rem;
         line-height: 1.5rem;
         font-family: inherit;
-        color: var(--grey-10);
-        transition: color .3s ease-in-out;
+        color: var(--text-3);
+        transition: var(--transition) color;
 
-        &.active {
-            color: var(--blue);
+        &.active,
+        &.active:hover {
+            color: var(--blue-61);
         }
 
         &:hover {
-            color: var(--grey-1);
+            color: var(--text-1);
         }
+    }
+
+    .clear-btn:hover {
+        color: var(--text-1);
     }
 }

@@ -16,6 +16,7 @@
         width: 2.1rem;
         margin-top: 0;
         cursor: pointer;
+        transition: var(--transition) all;
 
         @include breakpoint-up(large) {
             width: 2.6rem;

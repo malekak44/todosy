@@ -8,13 +8,13 @@
 
     h3 {
         font-size: 1.8rem;
-        color: var(--grey-1);
+        color: var(--text-1);
     }
 
     p {
         line-height: 1.5;
-        color: var(--grey-6);
         margin: 1.75rem auto;
+        color: var(--gray-69);
 
         @include breakpoint-up(large) {
             line-height: normal;

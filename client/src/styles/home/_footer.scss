@@ -17,7 +17,7 @@
         cursor: pointer;
         text-decoration: none;
         text-transform: uppercase;
-        transition: all 0.3s ease-in-out;
+        transition: var(--transition) all;
 
         &:hover {
             color: $purple;
@@ -39,7 +39,7 @@
         svg {
             width: 2.2rem;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
+            transition: var(--transition) all;
 
             path {
                 fill: $white;
