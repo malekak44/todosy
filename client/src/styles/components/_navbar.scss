@@ -19,28 +19,26 @@
     }
 
     nav {
-        display: flex;
-        background: $white;
         position: relative;
-        align-items: flex-start;
-        justify-content: space-between;
+        background: $white;
         padding: 2.15rem 2.45rem 1.85rem;
+        @include flexbox(flex-start, space-between);
 
         @include breakpoint-up(large) {
-            align-items: center;
             padding: 2.25rem 8rem;
+            @include flexbox(center, space-between);
         }
     }
 
     &__logo {
-        font-size: 20px;
+        font-size: 2rem;
         font-weight: bold;
         color: transparent;
         @include gradient-text;
         text-transform: uppercase;
 
         @include breakpoint-up(large) {
-            font-size: 18px;
+            font-size: 1.8rem;
         }
     }
 
@@ -50,11 +48,11 @@
         font-style: italic;
 
         p {
-            margin: 2px 4px 0;
+            margin: 0.2rem 0.4rem 0;
         }
 
         img {
-            width: 16px;
+            width: 1.6rem;
 
             &:first-child {
                 align-self: flex-start;
@@ -70,15 +68,15 @@
         cursor: pointer;
 
         >span {
-            width: 26px;
-            height: 2px;
+            width: 2.6rem;
+            height: 0.2rem;
             display: block;
-            transform-origin: 3px 1px;
+            transform-origin: 0.3rem 0.1rem;
             transition: all 300ms ease-in-out;
-            background-image: linear-gradient(130deg, $skyBlue, $purple);
+            @include gradient-background(130deg);
 
             &:not(:last-child) {
-                margin-bottom: 5px;
+                margin-bottom: 0.5rem;
             }
         }
     }
@@ -90,15 +88,15 @@
         margin-top: 3rem;
         position: absolute;
         background: $white;
-        border-radius: 5px;
+        border-radius: 0.5rem;
         width: calc(100% - 5rem);
         transform: translateX(-50%);
 
         a {
             padding: 1rem;
             display: block;
-            color: #494c6b;
             text-align: center;
+            color: var(--grey-1);
 
             &:hover {
                 color: transparent;
@@ -113,8 +111,8 @@
 
     &__links {
         a {
-            color: #494c6b;
-            transition: background-image 0.3s ease-in-out;
+            color: var(--grey-1);
+            transition: all 0.3s ease-in-out;
 
             &:hover {
                 color: transparent;

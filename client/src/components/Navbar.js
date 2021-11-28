@@ -7,6 +7,7 @@ import { useGlobalContext } from '../context/AppContext';
 const Navbar = () => {
     const { quote, user } = useGlobalContext();
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const closeNavbar = () => setIsNavbarOpen(false);
 
     useEffect(() => {
         const body = document.body;
@@ -20,7 +21,7 @@ const Navbar = () => {
     return (
         <section className={isNavbarOpen ? 'navbar open' : 'navbar'}>
             <div
-                onClick={() => setIsNavbarOpen(false)}
+                onClick={closeNavbar}
                 className={isNavbarOpen ? 'overlay has-fade fade-in' : 'overlay has-fade fade-out'}
             ></div>
             <nav>
@@ -62,9 +63,9 @@ const Navbar = () => {
                         <Link to="/today">Today</Link>
                         <Link to="profile">Profile</Link>
                     </> : <>
-                        <Link to="/" onClick={() => setIsNavbarOpen(false)}>Home</Link>
-                        <Link to="/login" onClick={() => setIsNavbarOpen(false)}>Login</Link>
-                        <Link to="/signup" onClick={() => setIsNavbarOpen(false)}>Signup</Link>
+                        <Link to="/" onClick={closeNavbar}>Home</Link>
+                        <Link to="/login" onClick={closeNavbar}>Login</Link>
+                        <Link to="/signup" onClick={closeNavbar}>Signup</Link>
                     </>
                 }
             </div>
