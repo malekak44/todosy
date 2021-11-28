@@ -1,17 +1,15 @@
 .home__footer {
-    display: flex;
     text-align: center;
-    align-items: center;
     flex-direction: column;
     padding: 3.75rem 2rem 3rem;
-    justify-content: space-between;
-    background: linear-gradient(130deg, $skyBlue, $purple);
+    @include gradient-background(130deg);
+    @include flexbox(center, space-between);
 
     @include breakpoint-up(large) {
         text-align: left;
         flex-direction: row;
         padding: 3rem 10rem 2.25rem;
-        background: linear-gradient(64deg, $skyBlue, $purple);
+        @include gradient-background(64deg);
     }
 
     &__logo {
@@ -39,7 +37,7 @@
 
     &__social {
         svg {
-            width: 22px;
+            width: 2.2rem;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
 

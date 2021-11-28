@@ -6,27 +6,27 @@
     }
 
     h1 {
-        color: #494c6b;
+        color: var(--grey-1);
         text-transform: capitalize;
     }
 
     p {
-        color: #777a92;
         line-height: 1.5;
+        color: var(--grey-2);
     }
 
     button {
         @include gradient-button;
-        height: 44px;
-        font-size: 16px;
+        height: 4.4rem;
         font-weight: 300;
-        padding: 15px 20px;
-        border-radius: 30px;
+        font-size: 1.6rem;
+        border-radius: 3rem;
+        padding: 1.5rem 2rem;
 
         @include breakpoint-up(medium) {
-            height: 48px;
-            font-size: 18px;
-            padding: 17px 20px;
+            height: 4.8rem;
+            font-size: 1.8rem;
+            padding: 1.7rem 2rem;
         }
     }
 

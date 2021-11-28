@@ -1,3 +1,21 @@
+@mixin body-background($device, $theme, $size, $position) {
+    background: url('../assets//bg-#{$device}-#{$theme}.jpg'),
+    $veryLightGray;
+    background-size: $size;
+    background-repeat: no-repeat;
+    background-position: $position;
+}
+
+@mixin flexbox($align, $justify) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin gradient-background($degree) {
+    background: linear-gradient($degree, $skyBlue, $purple);
+}
+
 @mixin gradient-text {
     background-clip: text;
     -moz-background-clip: text;
@@ -14,7 +32,7 @@
     outline: none;
     color: $white;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-family: inherit;
     background: linear-gradient(135deg, $skyBlue, $purple);
 
@@ -23,8 +41,8 @@
     }
 }
 
-// 640px, 1024px, 1400px
-$breakpoints-up: ("medium": "40em", "large": "64em", "xlarge": "87.5em");
+// 640px, 1024px, 1440px
+$breakpoints-up: ("medium": "40em", "large": "64em", "xlarge": "90em");
 
 // 639px, 1023px, 1399px
 $breakpoints-down: ("small": "39.9375em", "medium": "63.9375em", "large": "87.4375em");

@@ -1,10 +1,8 @@
 .home__about {
     width: 95%;
-    display: flex;
     margin: 4rem auto;
-    align-items: center;
-    justify-content: space-between;
     flex-direction: column;
+    @include flexbox(center, space-between);
 
     @include breakpoint-up(large) {
         width: 90%;
@@ -14,16 +12,14 @@
 
     &__text {
         flex: 1;
-        display: flex;
         text-align: center;
-        align-items: center;
         padding: 4rem 0 5rem;
-        justify-content: center;
+        @include flexbox(center, center);
 
         @include breakpoint-up(large) {
             padding: 0;
             text-align: left;
-            justify-content: flex-start;
+            @include flexbox(center, flex-start);
         }
 
         &__wrapper {

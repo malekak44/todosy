@@ -1,8 +1,8 @@
 .home__free-up {
-    margin-top: -5px;
-    padding: 6rem 1rem;
     text-align: center;
-    border-top: 2px solid $white;
+    margin-top: -0.5rem;
+    padding: 6rem 1.5rem;
+    border-top: 0.25rem solid $white;
 
     @include breakpoint-up(large) {
         padding: 8rem 0;
@@ -14,8 +14,8 @@
         line-height: 1.5;
 
         @include breakpoint-up(large) {
-            line-height: normal;
             margin: 2rem auto;
+            line-height: normal;
         }
     }
 

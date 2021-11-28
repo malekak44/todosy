@@ -9,6 +9,9 @@
 }
 
 :root {
+    --grey-1: #494c6b;
+    --grey-2: #777a92;
+    --grey-3: #2d314d;
     --bg-icon-cross: url('../assets/icon-cross.svg');
     --bg-icon-cross-hover: url('../assets/icon-cross-hover.svg');
 }
@@ -18,17 +21,23 @@ html {
 }
 
 body {
-    font-size: 18px;
+    font-size: 1.8rem;
     font-family: 'Josefin Sans', sans-serif;
-    background: url('../assets//bg-mobile-light.jpg'), $veryLightGray;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50% 5rem;
+
+    @include breakpoint-down(small) {
+        @include body-background(mobile, light, contain, 50% 5rem);
+    }
+
+    @media screen and (max-width:375px) {
+        @include body-background(mobile, light, 120%, 50% 5rem);
+    }
 
     @include breakpoint-up(medium) {
-        background: url('../assets/bg-desktop-light.jpg'), $veryLightGray ;
-        background-repeat: no-repeat;
-        background-position: 50% 5.5rem;
+        @include body-background(desktop, light, auto, 50% 5.5rem);
+    }
+
+    @include breakpoint-up(xlarge) {
+        @include body-background(desktop, light, contain, 50% 5.5rem);
     }
 
     &.noscroll {
@@ -48,14 +57,13 @@ a {
     bottom: 0px;
     opacity: 0;
     display: block;
-    background-image: linear-gradient(#2d314d, transparent);
+    background-image: linear-gradient(var(--grey-3), transparent);
 
     @include breakpoint-up(large) {
         display: none;
     }
 }
 
-// Visibility
 .hide-for-mobile {
     @include breakpoint-down(medium) {
         display: none !important;

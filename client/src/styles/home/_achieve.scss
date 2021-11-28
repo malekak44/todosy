@@ -1,11 +1,9 @@
 .home__achieve {
-    display: flex;
     margin-top: 0;
-    align-items: center;
     padding: 4rem 0 7rem;
-    background: #F9E1D5;
+    background: $champagne;
     flex-direction: column;
-    justify-content: space-between;
+    @include flexbox(center, space-between);
 
     @include breakpoint-up(large) {
         padding: 0 0 4rem;
@@ -15,16 +13,14 @@
 
     &__text {
         flex: 1;
-        display: flex;
         padding-top: 5rem;
         text-align: center;
-        align-items: flex-end;
-        justify-content: center;
+        @include flexbox(flex-end, center);
 
         @include breakpoint-up(large) {
             text-align: left;
             padding-top: 8.5rem;
-            justify-content: flex-start;
+            @include flexbox(flex-end, flex-start);
         }
 
         &__wrapper {
@@ -36,8 +32,12 @@
                 margin-bottom: 1.5rem;
 
                 @include breakpoint-up(large) {
-                    font-size: 4.5rem;
+                    font-size: 3.65rem;
                     line-height: normal;
+                }
+
+                @media screen and (min-width:1275px) {
+                    font-size: 4.5rem;
                 }
 
                 span {
