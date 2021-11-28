@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Home from './pages/Home';
 import Todos from './pages/Todos';
 import Today from './pages/Today';
@@ -12,7 +12,16 @@ import { useGlobalContext } from './context/AppContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function App() {
-  const { isLoading } = useGlobalContext();
+  const { isLoading, darkTheme } = useGlobalContext();
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (darkTheme) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [darkTheme]);
 
   if (isLoading) {
     return <Loading />

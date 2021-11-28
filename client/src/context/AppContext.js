@@ -12,6 +12,11 @@ const AppProvider = ({ children }) => {
     const [filter, setFilter] = useState('');
     const [isToday, setIsToday] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [darkTheme, setDarkTheme] = useState(false);
+
+    const setTheme = () => {
+        setDarkTheme(!darkTheme);
+    }
 
     const fetchQuote = async () => {
         try {
@@ -150,9 +155,11 @@ const AppProvider = ({ children }) => {
             filter,
             isToday,
             isLoading,
+            darkTheme,
             login,
             logout,
             signup,
+            setTheme,
             setTodos,
             setFilter,
             setIsToday,

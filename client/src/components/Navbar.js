@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import quoteLeft from '../assets/quote-left.png';
 import quoteRight from '../assets/quote-right.png';
 import React, { useEffect, useState } from 'react';
+import { BsMoonFill, BsSunFill } from 'react-icons/bs';
 import { useGlobalContext } from '../context/AppContext';
 
 const Navbar = () => {
-    const { quote, user } = useGlobalContext();
+    const { quote, user, darkTheme, setTheme } = useGlobalContext();
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
     const closeNavbar = () => setIsNavbarOpen(false);
 
@@ -53,6 +54,10 @@ const Navbar = () => {
                             <Link to="/signup">Signup</Link>
                         </>
                     }
+                    {darkTheme ?
+                        <BsSunFill onClick={setTheme} className="navbar__icon" /> :
+                        <BsMoonFill onClick={setTheme} className="navbar__icon" />
+                    }
                 </div>
             </nav>
             <div
@@ -69,7 +74,7 @@ const Navbar = () => {
                     </>
                 }
             </div>
-        </section>
+        </section >
     );
 };
 
