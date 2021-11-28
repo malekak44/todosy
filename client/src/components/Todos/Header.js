@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import sun from '../../assets/icon-sun.svg';
+import React from 'react';
 import moon from '../../assets/icon-moon.svg';
-const getLocalStorage = () => {
-    const theme = localStorage.getItem("darkTheme");
-    if (theme) {
-        return theme;
-    } else {
-        return false;
-    }
-}
 
 const Header = ({ title }) => {
-    const [darkTheme, setDarkTheme] = useState(getLocalStorage());
-
-    useEffect(() => {
-        localStorage.setItem("darkTheme", darkTheme);
-    }, [darkTheme]);
 
     return (
         <div className="todos__header">
             <h1 className="todos__header__logo">{title}</h1>
             <img
-                src={darkTheme ? sun : moon}
+                src={moon}
                 alt="theme-icon"
                 className="todos__header__icon"
-                onClick={() => setDarkTheme(!darkTheme)}
             />
         </div>
     );

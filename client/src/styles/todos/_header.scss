@@ -1,27 +1,25 @@
 .todos__header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    @include flexbox(flex-start, space-between);
 
     &__logo {
-        color: white;
-        font-size: 27px;
-        letter-spacing: 12px;
+        color: $white;
+        font-size: 2.7rem;
+        letter-spacing: 1.2rem;
 
         @include breakpoint-up(large) {
-            font-size: 40px;
-            letter-spacing: 15px;
+            font-size: 4rem;
+            letter-spacing: 1.5rem;
         }
     }
 
     &__icon {
-        width: 21px;
+        width: 2.1rem;
         margin-top: 0;
         cursor: pointer;
 
         @include breakpoint-up(large) {
-            width: 26px;
-            margin-top: 7px;
+            width: 2.6rem;
+            margin-top: 0.7rem;
         }
     }
 }

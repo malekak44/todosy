@@ -3,10 +3,10 @@
     text-align: center;
 
     p {
-        color: #9495a5;
         font-weight: 400;
         font-size: 1.5rem;
         line-height: 1.5rem;
+        color: var(--grey-10);
         letter-spacing: -.19px;
 
         @include breakpoint-up(large) {

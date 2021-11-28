@@ -89,10 +89,6 @@
         bottom: 0px;
         opacity: 0;
         background-image: linear-gradient(var(--grey-3), transparent);
-
-        @include breakpoint-up(large) {
-            opacity: 0;
-        }
     }
 
     &__menu {
@@ -115,10 +111,6 @@
                 color: transparent;
                 @include gradient-text;
             }
-        }
-
-        @include breakpoint-up(large) {
-            opacity: 0;
         }
     }
 

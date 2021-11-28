@@ -22,7 +22,7 @@ const Navbar = () => {
         <section className={isNavbarOpen ? 'navbar open' : 'navbar'}>
             <div
                 onClick={closeNavbar}
-                className={isNavbarOpen ? 'overlay has-fade fade-in' : 'overlay has-fade fade-out'}
+                className={`overlay has-fade ${isNavbarOpen ? 'fade-in' : 'fade-out'}`}
             ></div>
             <nav>
                 <Link to={user ? '/todos' : '/'} className="navbar__logo">
@@ -56,7 +56,7 @@ const Navbar = () => {
                 </div>
             </nav>
             <div
-                className={isNavbarOpen ? 'navbar__menu has-fade fade-in' : 'navbar__menu has-fade fade-out'}
+                className={`navbar__menu has-fade ${isNavbarOpen ? 'fade-in' : 'fade-out'}`}
             >
                 {user ?
                     <>

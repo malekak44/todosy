@@ -17,3 +17,15 @@
         border-top-right-radius: 0.5rem;
     }
 }
+
+.todos__wrapper,
+.todos__empty-list {
+    background: $white;
+    margin: 2rem auto 0;
+    border-radius: 0.5rem;
+    box-shadow: var(--component-shadow);
+
+    @include breakpoint-up(large) {
+        margin: 2.4rem auto 0;
+    }
+}

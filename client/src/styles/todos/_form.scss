@@ -1,40 +1,51 @@
 .todos__form {
-    border-radius: 5px;
-    background: #fff;
-    margin: 38px auto 0;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+    background: $white;
+    padding: 1.6rem 2rem;
+    margin: 3.8rem auto 0;
+    border-radius: 0.5rem;
+    box-shadow: var(--component-shadow);
+    @include flexbox(center, flex-start);
 
     @include breakpoint-up(large) {
-        padding: 20px 24px;
-        margin: 42px auto 0;
+        padding: 2rem 2.4rem;
+        margin: 4.2rem auto 0;
     }
 
     input {
         border: none;
         outline: none;
-        font-size: 13.5px;
-        margin-left: 2px;
+        font-size: 1.35rem;
+        margin-left: 0.2rem;
         font-family: inherit;
         letter-spacing: -.25px;
 
         @include breakpoint-up(large) {
-            font-size: 18px;
+            font-size: 1.8rem;
         }
 
         &::placeholder {
-            color: #9394a5;
+            color: var(--grey-12);
         }
 
         &[type=text] {
-            width: 56%;
+            width: 52%;
+
+            @media (min-width: 768px) {
+                width: 65%;
+            }
+
+            @include breakpoint-up(large) {
+                width: 56%;
+            }
         }
 
         &[type=date] {
-            width: 30%;
+            width: 35%;
             margin-left: auto;
+
+            @media (min-width: 768px) {
+                width: 25%;
+            }
 
             @include breakpoint-up(large) {
                 width: 32%;

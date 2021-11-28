@@ -37,7 +37,7 @@ const Todo = ({ todo }) => {
   }
 
   return (
-    <div className="todo__item">
+    <div className={`todo__item ${isToday && 'today__item'}`}>
       <button
         aria-pressed="true"
         onClick={handleComplete}
