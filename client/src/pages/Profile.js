@@ -48,7 +48,7 @@ const Profile = () => {
     return (
         <>
             {!user && <Navigate to="/login" />}
-            <section className="profile">
+            <section className="profile container">
                 <div className="profile__picture">
                     <div className="profile__picture__wrapper">
                         <label htmlFor="file" className={isUploading ? 'upload' : ''}>
@@ -59,23 +59,25 @@ const Profile = () => {
                         <img src={imageUrl} alt="profile-pic" />
                     </div>
                 </div>
-                <form className="profile__form" onSubmit={handleSubmit} >
-                    <div className="form-group">
-                        <input type="text" name="name" id="name" value={values.name} onChange={handleChange} autoComplete="off" />
-                        <label htmlFor="name">Name</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="email" name="email" id="email" value={values.email} onChange={handleChange} autoComplete="off" />
-                        <label htmlFor="email">Email</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" name="location" id="location" value={values.location} onChange={handleChange} autoComplete="off" />
-                        <label htmlFor="location">Location</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value={formStatus} />
-                    </div>
-                </form>
+                <div className="form__wrapper">
+                    <form onSubmit={handleSubmit} >
+                        <div className="form__group">
+                            <input type="text" name="name" id="name" value={values.name} onChange={handleChange} autoComplete="off" />
+                            <label htmlFor="name">Name</label>
+                        </div>
+                        <div className="form__group">
+                            <input type="email" name="email" id="email" value={values.email} onChange={handleChange} autoComplete="off" />
+                            <label htmlFor="email">Email</label>
+                        </div>
+                        <div className="form__group">
+                            <input type="text" name="location" id="location" value={values.location} onChange={handleChange} autoComplete="off" />
+                            <label htmlFor="location">Location</label>
+                        </div>
+                        <div className="form__group">
+                            <input type="submit" value={formStatus} />
+                        </div>
+                    </form>
+                </div>
             </section>
         </>
     );

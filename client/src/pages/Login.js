@@ -31,24 +31,24 @@ const Login = () => {
     return (
         <>
             {user ? <Navigate to="/todos" /> :
-                <div className="login">
+                <section className="container">
                     <img src={loginImg} alt="login-img" />
-                    <div className="login__wrapper">
-                        <h3 className="mb-4">Log In</h3>
-                        <form className="login__form" onSubmit={handleSubmit}>
-                            <div className="form-group">
+                    <div className="form__wrapper">
+                        <h3>Log In</h3>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form__group">
                                 <input type="email" name="email" id="email" value={values.email} onChange={handleChange} autoComplete="off" />
                                 <label htmlFor="email">Email</label>
                             </div>
-                            <div className="form-group">
+                            <div className="form__group">
                                 <input type="password" name="password" id="password" value={values.password} onChange={handleChange} />
                                 <label htmlFor="password">Password</label>
                                 <span toggle="#password"></span>
                             </div>
-                            <div className="form-group">
+                            <div className="form__group">
                                 <input type="submit" value="Log In" />
                             </div>
-                            <div className="form-group checkbox__group">
+                            <div className="form__group checkbox__group">
                                 <label className="checkbox__wrapper">Remember Me
                                     <input type="checkbox" />
                                     <span className="checkmark"></span>
@@ -58,7 +58,7 @@ const Login = () => {
                         </form>
                         <p className="link">Not a member? <Link to="/signup">Sign Up</Link></p>
                     </div>
-                </div>}
+                </section>}
         </>
     );
 };

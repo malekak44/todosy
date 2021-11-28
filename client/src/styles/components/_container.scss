@@ -1,0 +1,19 @@
+.container {
+    max-width: 90%;
+    margin: 6rem auto;
+    background: $white;
+    border-radius: 0.5rem;
+    box-shadow: var(--component-shadow);
+
+    @include breakpoint-up(large) {
+        max-width: 54rem;
+        margin: 12rem auto;
+    }
+
+    img {
+        width: 100%;
+        vertical-align: middle;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+}

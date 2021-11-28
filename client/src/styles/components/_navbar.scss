@@ -81,9 +81,22 @@
         }
     }
 
+    .overlay {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        opacity: 0;
+        background-image: linear-gradient(var(--grey-3), transparent);
+
+        @include breakpoint-up(large) {
+            opacity: 0;
+        }
+    }
+
     &__menu {
         left: 50%;
-        display: block;
         padding: 1.25rem;
         margin-top: 3rem;
         position: absolute;
@@ -105,7 +118,7 @@
         }
 
         @include breakpoint-up(large) {
-            display: none;
+            opacity: 0;
         }
     }
 

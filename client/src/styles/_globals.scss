@@ -12,8 +12,13 @@
     --grey-1: #494c6b;
     --grey-2: #777a92;
     --grey-3: #2d314d;
+    --grey-4: #e4e5f1;
+    --grey-5: #fafafa;
+    --grey-6: #627d98;
+    --grey-7: #777a92;
     --bg-icon-cross: url('../assets/icon-cross.svg');
     --bg-icon-cross-hover: url('../assets/icon-cross-hover.svg');
+    --component-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
 }
 
 html {
@@ -47,21 +52,6 @@ body {
 
 a {
     text-decoration: none;
-}
-
-.overlay {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    opacity: 0;
-    display: block;
-    background-image: linear-gradient(var(--grey-3), transparent);
-
-    @include breakpoint-up(large) {
-        display: none;
-    }
 }
 
 .hide-for-mobile {

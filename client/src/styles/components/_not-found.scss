@@ -1,34 +1,28 @@
 .not-found {
-    max-width: 54rem;
-    border-radius: 5px;
-    margin: 5rem auto 5rem;
-    box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+    padding: 4rem 2rem;
+    text-align: center;
 
-    img {
-        width: 100%;
-        vertical-align: middle;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+    @include breakpoint-up(large) {
+        padding: 4rem 1rem;
     }
 
-    .content {
-        padding: 4rem 1rem;
-        text-align: center;
+    h3 {
+        font-size: 1.8rem;
+        color: var(--grey-1);
+    }
 
-        h3 {
-            font-size: 18px;
-            color: #494c6b;
-        }
+    p {
+        line-height: 1.5;
+        color: var(--grey-6);
+        margin: 1.75rem auto;
 
-        p {
-            color: #627d98;
-            margin: 1.75rem auto;
+        @include breakpoint-up(large) {
+            line-height: normal;
         }
+    }
 
-        a {
-            color: transparent;
-            text-decoration: none;
-            @include gradient-text;
-        }
+    a {
+        color: transparent;
+        @include gradient-text;
     }
 }

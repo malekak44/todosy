@@ -4,8 +4,8 @@
     border-radius: 50%;
     position: relative;
     margin-right: 1.2rem;
+    background-color: var(--grey-4);
     transition: all 0.3s ease-in-out;
-    background-color: $veryLightGrayishBlue;
 
     @include breakpoint-up(large) {
         width: 2.4rem;
@@ -21,26 +21,29 @@
         height: 1.8rem;
         position: absolute;
         border-radius: 50%;
+        background-color: $white;
         transform: translate(-50%, -50%);
-        background-color: #fff;
         transition: background-color .3s ease-in-out, background-image .3s ease-in-out;
 
-        @media (min-width: 768px) {
+        @include breakpoint-up(medium) {
             width: 2.2rem;
             height: 2.2rem;
         }
     }
 
-    &:hover,
-    &.focusing {
-        transform: scale(1.1);
+    .active-checkbox {
         background-color: transparent;
         background-image: linear-gradient(135deg, $skyBlue 0%, $purple 100%);
     }
 
+    &:hover,
+    &.focusing {
+        transform: scale(1.1);
+        @extend .active-checkbox;
+    }
+
     &.completed {
-        background-color: transparent;
-        background-image: linear-gradient(135deg, $skyBlue 0%, $purple 100%);
+        @extend .active-checkbox;
 
         &::before {
             background-position: center;
