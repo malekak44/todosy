@@ -107,15 +107,25 @@
         transform: translateX(-50%);
         background: var(--bg-component);
 
-        a {
+        a,
+        p {
             padding: 1rem;
             display: block;
+            cursor: pointer;
             text-align: center;
             color: var(--text-1);
 
             &:hover {
                 color: transparent;
                 @include gradient-text;
+            }
+        }
+
+        p {
+            @include flexbox(center, center);
+
+            svg {
+                margin-left: 0.6rem;
             }
         }
     }
