@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router';
 import camera from '../assets/camera.png';
 import demoPic from '../assets/demo-pic.png';
+import FormGroup from '../components/FormGroup';
 import { useGlobalContext } from '../context/AppContext';
 
 const Profile = () => {
@@ -61,21 +62,31 @@ const Profile = () => {
                 </div>
                 <div className="form__wrapper">
                     <form onSubmit={handleSubmit} >
-                        <div className="form__group">
-                            <input type="text" name="name" id="name" value={values.name} onChange={handleChange} autoComplete="off" />
-                            <label htmlFor="name">Name</label>
-                        </div>
-                        <div className="form__group">
-                            <input type="email" name="email" id="email" value={values.email} onChange={handleChange} autoComplete="off" />
-                            <label htmlFor="email">Email</label>
-                        </div>
-                        <div className="form__group">
-                            <input type="text" name="location" id="location" value={values.location} onChange={handleChange} autoComplete="off" />
-                            <label htmlFor="location">Location</label>
-                        </div>
-                        <div className="form__group">
-                            <input type="submit" value={formStatus} />
-                        </div>
+                        <FormGroup
+                            type="text"
+                            id="name"
+                            label="Name"
+                            value={values.name}
+                            handleChange={handleChange}
+                        />
+                        <FormGroup
+                            type="email"
+                            id="email"
+                            label="Email"
+                            value={values.email}
+                            handleChange={handleChange}
+                        />
+                        <FormGroup
+                            type="text"
+                            id="location"
+                            label="Location"
+                            value={values.location}
+                            handleChange={handleChange}
+                        />
+                        <FormGroup
+                            type="submit"
+                            value={formStatus}
+                        />
                     </form>
                 </div>
             </section>

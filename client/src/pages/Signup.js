@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import FormGroup from '../components/FormGroup';
 import signupImg from '../assets/signup-img.jpg';
 import { useGlobalContext } from '../context/AppContext';
 import { Navigate, useLocation, useNavigate } from 'react-router';
@@ -37,22 +38,31 @@ const Signup = () => {
                     <div className="form__wrapper">
                         <h3>Sign Up</h3>
                         <form onSubmit={handleSubmit} >
-                            <div className="form__group">
-                                <input type="text" name="name" id="name" value={values.name} onChange={handleChange} autoComplete="off" />
-                                <label htmlFor="name">Name</label>
-                            </div>
-                            <div className="form__group">
-                                <input type="email" name="email" id="email" value={values.email} onChange={handleChange} autoComplete="off" />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div className="form__group">
-                                <input type="password" name="password" id="password" value={values.password} onChange={handleChange} />
-                                <label htmlFor="password">Password</label>
-                                <span toggle="#password"></span>
-                            </div>
-                            <div className="form__group">
-                                <input type="submit" value="Sign Up" />
-                            </div>
+                            <FormGroup
+                                type="text"
+                                id="name"
+                                label="Name"
+                                value={values.name}
+                                handleChange={handleChange}
+                            />
+                            <FormGroup
+                                type="email"
+                                id="email"
+                                label="Email"
+                                value={values.email}
+                                handleChange={handleChange}
+                            />
+                            <FormGroup
+                                type="password"
+                                id="password"
+                                label="Password"
+                                value={values.password}
+                                handleChange={handleChange}
+                            />
+                            <FormGroup
+                                type="submit"
+                                value="Sign Up"
+                            />
                         </form>
                         <p className="link">Already have an account? <Link to="/login">Log In</Link></p>
                     </div>
