@@ -20,9 +20,14 @@ html {
 body {
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
-    background: url('../assets/bg-desktop-light.jpg'), $veryLightGray;
+    background: url('../assets//bg-mobile-light.jpg'), $veryLightGray;
     background-repeat: no-repeat;
-    background-position: 50% 5.5rem;
+    background-position: 50% 5rem;
+
+    @include breakpoint-up(large) {
+        background-position: 50% 5.5rem;
+        background: url('../assets/bg-desktop-light.jpg'), $veryLightGray;
+    }
 
     &.noscroll {
         overflow: hidden;

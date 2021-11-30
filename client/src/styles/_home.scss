@@ -1,5 +1,9 @@
 .home {
-    margin-top: 5.5rem;
+    margin-top: 3rem;
+
+    @include breakpoint-up(large) {
+        margin-top: 5.5rem;
+    }
 
     h1 {
         color: #494c6b;
@@ -13,11 +17,17 @@
 
     button {
         @include gradient-button;
-        height: 48px;
-        font-size: 18px;
+        height: 44px;
+        font-size: 16px;
         font-weight: 300;
-        padding: 17px 20px;
+        padding: 15px 20px;
         border-radius: 30px;
+
+        @include breakpoint-up(large) {
+            height: 48px;
+            font-size: 18px;
+            padding: 17px 20px;
+        }
     }
 
     &__header {
@@ -26,14 +36,23 @@
 
         h1 {
             color: $white;
-            font-size: 5rem;
-            margin-bottom: 3rem;
+            font-size: 3rem;
+            margin-bottom: 1.75rem;
+
+            @include breakpoint-up(large) {
+                font-size: 5rem;
+                margin-bottom: 3rem;
+            }
 
             span {
                 display: block;
 
                 &:first-child {
-                    margin-bottom: 1.5rem;
+                    margin-bottom: 1.25rem;
+
+                    @include breakpoint-up(large) {
+                        margin-bottom: 1.5rem;
+                    }
                 }
             }
         }
