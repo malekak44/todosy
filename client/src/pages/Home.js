@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Home/Header';
 import Contents from '../components/Home/Contents';
 import FreeUp from '../components/Home/FreeUp';
-// import About from '../components/Home/About';
+import About from '../components/Home/About';
 // import Achieve from '../components/Home/Achieve';
 // import Footer from '../components/Home/Footer';
 
@@ -12,8 +12,8 @@ const Home = () => {
             <Header />
             <Contents />
             <FreeUp />
-            {/*<About />
-            <Achieve />
+            <About />
+            {/*<Achieve />
             <Footer /> */}
         </section>
     );
