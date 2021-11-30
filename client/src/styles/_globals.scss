@@ -23,4 +23,35 @@ body {
     background: url('../assets/bg-desktop-light.jpg'), $veryLightGray;
     background-repeat: no-repeat;
     background-position: 50% 5.5rem;
+
+    &.noscroll {
+        overflow: hidden;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0;
+    background-image: linear-gradient(#2d314d, transparent);
+}
+
+// Visibility
+.hide-for-mobile {
+    @include breakpoint-down(medium) {
+        display: none !important;
+    }
+}
+
+.hide-for-desktop {
+    @include breakpoint-up(large) {
+        display: none !important;
+    }
 }
