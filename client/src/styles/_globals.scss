@@ -24,9 +24,10 @@ body {
     background-repeat: no-repeat;
     background-position: 50% 5rem;
 
-    @include breakpoint-up(large) {
+    @include breakpoint-up(medium) {
+        background: url('../assets/bg-desktop-light.jpg'), $veryLightGray ;
+        background-repeat: no-repeat;
         background-position: 50% 5.5rem;
-        background: url('../assets/bg-desktop-light.jpg'), $veryLightGray;
     }
 
     &.noscroll {
