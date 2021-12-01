@@ -4,7 +4,7 @@ const Token = require('../models/Token');
 const { attachCookiesToResponse } = require('./jwt');
 
 const authorizeToken = async (req, res, user) => {
-    let refreshToken = '';
+    let refreshToken = 'this is refreshToken';
     const existingToken = await Token.findOne({ user: user.userId });
 
     if (existingToken) {

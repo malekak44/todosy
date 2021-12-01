@@ -46,7 +46,12 @@ a {
     right: 0px;
     bottom: 0px;
     opacity: 0;
+    display: block;
     background-image: linear-gradient(#2d314d, transparent);
+
+    @include breakpoint-up(large) {
+        display: none;
+    }
 }
 
 // Visibility

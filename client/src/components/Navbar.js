@@ -1,22 +1,12 @@
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import quoteLeft from '../assets/quote-left.png';
 import quoteRight from '../assets/quote-right.png';
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../context/AppContext';
-import { url } from '../utils/url';
-const quoteUrl = `${url}/quote`;
 
 const Navbar = () => {
-    const { user } = useGlobalContext();
+    const { quote, user } = useGlobalContext();
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-    const [quote, setQuote] = useState('');
-
-    useEffect(() => {
-        axios.get(quoteUrl)
-            .then(data => setQuote(data.data.quote));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     useEffect(() => {
         const body = document.body;
