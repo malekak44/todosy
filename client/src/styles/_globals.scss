@@ -70,24 +70,9 @@ html {
 
 body {
     font-size: 1.8rem;
+    background: var(--bg-app);
     font-family: 'Josefin Sans', sans-serif;
     transition: var(--transition) background;
-
-    @include breakpoint-down(small) {
-        @include body-background(var(--bg-img-mobile), var(--bg-app), contain, 50% 5rem);
-    }
-
-    @media screen and (max-width:375px) {
-        @include body-background(var(--bg-img-mobile), var(--bg-app), 120%, 50% 5rem);
-    }
-
-    @include breakpoint-up(medium) {
-        @include body-background(var(--bg-img-desktop), var(--bg-app), auto, 50% 5.5rem);
-    }
-
-    @include breakpoint-up(xlarge) {
-        @include body-background(var(--bg-img-desktop), var(--bg-app), contain, 50% 5.5rem);
-    }
 
     &.noscroll {
         overflow: hidden;
@@ -96,6 +81,26 @@ body {
 
 a {
     text-decoration: none;
+}
+
+.app__header {
+    height: 20rem;
+    padding-top: 4.8rem;
+    padding-left: 2.6rem;
+    padding-right: 2.4rem;
+    margin-bottom: -19rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: var(--bg-img-mobile);
+    transition: background var(--transition);
+
+    @media (min-width: 768px) {
+        height: 30rem;
+        padding-top: 7rem;
+        margin-bottom: -29rem;
+        background-image: var(--bg-img-desktop);
+    }
 }
 
 .hide-for-mobile {

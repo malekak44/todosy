@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Loading from './components/Loading';
+import AppHeader from './components/AppHeader';
 import ResetPassword from './pages/ResetPassword';
 import RequireAuth from './components/RequireAuth';
 import ForgotPassword from './pages/ForgotPassword';
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <Router>
       <Navbar />
+      <AppHeader />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/todos" element={
