@@ -29,6 +29,12 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String,
     },
+    passwordToken: {
+        type: String,
+    },
+    passwordTokenExpirationDate: {
+        type: String,
+    },
 }, { timestamps: true });
 
 UserSchema.pre('save', async function () {

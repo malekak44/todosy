@@ -3,6 +3,20 @@ const User = require('../models/User');
 const cloudinary = require('cloudinary').v2;
 const { StatusCodes } = require('http-status-codes');
 
+const getUser = async (req, res) => {
+    const userId = req.user.userId;
+    const user = await User.findOne({ _id: userId });
+    const filteredUser = {
+        _id: userId,
+        name: user.name,
+        email: user.email,
+        image: user.image,
+        location: user.location
+    };
+
+    res.status(StatusCodes.OK).json({ user: filteredUser });
+}
+
 const updateUser = async (req, res) => {
     const userId = req.user.userId;
 
@@ -36,6 +50,7 @@ const uploadImage = async (req, res) => {
 }
 
 module.exports = {
+    getUser,
     updateUser,
     uploadImage,
 }

@@ -1,7 +1,11 @@
+const {
+    createTokenUser,
+    authorizeToken
+} = require('../utils');
+const crypto = require('crypto');
 const Errors = require('../errors');
 const User = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
-const { createTokenUser, authorizeToken } = require('../utils');
 
 const register = async (req, res) => {
     const { name, email, password } = req.body;
@@ -49,23 +53,8 @@ const logout = async (req, res) => {
         .json({ msg: 'user logged out' });
 }
 
-const getUser = async (req, res) => {
-    const userId = req.user.userId;
-    const user = await User.findOne({ _id: userId });
-    const filteredUser = {
-        _id: userId,
-        name: user.name,
-        email: user.email,
-        image: user.image,
-        location: user.location
-    };
-
-    res.status(StatusCodes.OK).json({ user: filteredUser });
-}
-
 module.exports = {
     register,
     login,
     logout,
-    getUser,
 }

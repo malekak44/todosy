@@ -2,10 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const {
+    getUser,
     updateUser,
     uploadImage,
 } = require('../controllers/user');
 const authenticateUser = require('../middleware/auth')
+
+router
+    .route('/showMe')
+    .get(authenticateUser, getUser);
 
 router
     .route('/update')

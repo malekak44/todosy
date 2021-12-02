@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
 
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get(`${url}/auth/showMe`, { withCredentials: true });
+            const { data } = await axios.get(`${url}/user/showMe`, { withCredentials: true });
             setUser(data.user);
         } catch (error) {
             setUser(null);

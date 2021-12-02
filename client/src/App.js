@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Loading from './components/Loading';
+import ForgotPassword from './pages/ForgotPassword';
 import { useGlobalContext } from './context/AppContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -34,11 +35,12 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/todos" element={<Todos />} />
         <Route path="/today" element={<Today />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

@@ -4,7 +4,6 @@ const {
     register,
     login,
     logout,
-    getUser,
 } = require('../controllers/auth');
 const authenticateUser = require('../middleware/auth');
 
@@ -19,9 +18,5 @@ router
 router
     .route('/logout')
     .delete(authenticateUser, logout);
-
-router
-    .route('/showMe')
-    .get(authenticateUser, getUser);
 
 module.exports = router;
