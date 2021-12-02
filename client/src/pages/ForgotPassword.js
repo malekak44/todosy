@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import FormGroup from '../components/FormGroup';
+import { useGlobalContext } from '../context/AppContext';
 
 const ForgotPassword = () => {
     const [value, setValue] = useState('');
+    const [alert, setAlert] = useState('Submit');
+    const { forgotPassword } = useGlobalContext();
 
     const handleChange = (e) => {
         setValue(e.target.value);
@@ -10,6 +13,8 @@ const ForgotPassword = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        forgotPassword({ email: value })
+            .then(data => setAlert(data));
     }
 
     return (
@@ -25,7 +30,7 @@ const ForgotPassword = () => {
                 />
                 <FormGroup
                     type="submit"
-                    value="Submit"
+                    value={alert}
                 />
             </form>
         </section>

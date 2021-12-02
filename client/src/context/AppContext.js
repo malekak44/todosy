@@ -61,6 +61,15 @@ const AppProvider = ({ children }) => {
         setUser(null);
     }
 
+    const forgotPassword = async (payload) => {
+        try {
+            const { data } = await axios.post(`${url}/auth/forgot-password`, payload, { withCredentials: true });
+            return data.msg;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const updateUser = async (payload) => {
         try {
             const { data } = await axios.patch(`${url}/user/update`, payload, { withCredentials: true });
@@ -171,6 +180,7 @@ const AppProvider = ({ children }) => {
             getAllTodos,
             getTodayTodos,
             clearCompleted,
+            forgotPassword,
         }}>
             {children}
         </AppContext.Provider>

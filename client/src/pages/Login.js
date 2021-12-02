@@ -65,7 +65,7 @@ const Login = () => {
                                     <input type="checkbox" checked={isChecked} onChange={handleCheck} />
                                     <span className="checkmark"></span>
                                 </label>
-                                <p>Forgot Password</p>
+                                <Link to="/forgot-password">Forgot Password</Link>
                             </div>
                         </form>
                         <p className="link">Not a member? <Link to="/signup">Sign Up</Link></p>

@@ -4,6 +4,7 @@ const {
     register,
     login,
     logout,
+    forgotPassword,
 } = require('../controllers/auth');
 const authenticateUser = require('../middleware/auth');
 
@@ -18,5 +19,9 @@ router
 router
     .route('/logout')
     .delete(authenticateUser, logout);
+
+router
+    .route('/forgot-password')
+    .post(forgotPassword);
 
 module.exports = router;

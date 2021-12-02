@@ -58,8 +58,13 @@
                 flex-direction: row;
                 justify-content: space-between;
 
-                p {
+                a {
                     color: var(--text-2);
+
+                    &:hover {
+                        color: transparent;
+                        @include gradient-text;
+                    }
                 }
 
                 .checkbox__wrapper {
