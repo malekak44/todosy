@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { url } from '../utils/url';
 import React, { useState } from 'react';
-import { Navigate } from 'react-router';
 import camera from '../assets/camera.png';
 import demoPic from '../assets/demo-pic.png';
 import FormGroup from '../components/FormGroup';
@@ -47,50 +46,47 @@ const Profile = () => {
     }
 
     return (
-        <>
-            {!user && <Navigate to="/login" />}
-            <section className="profile container">
-                <div className="profile__picture">
-                    <div className="profile__picture__wrapper">
-                        <label htmlFor="file" className={isUploading ? 'upload' : ''}>
-                            <span>{isUploading ? 'Uploading...' : ''}</span>
-                            <img src={camera} alt="camera" />
-                        </label>
-                        <input id="file" type="file" onChange={uploadImage} accept="image/*" />
-                        <img src={imageUrl} alt="profile-pic" />
-                    </div>
+        <section className="profile container">
+            <div className="profile__picture">
+                <div className="profile__picture__wrapper">
+                    <label htmlFor="file" className={isUploading ? 'upload' : ''}>
+                        <span>{isUploading ? 'Uploading...' : ''}</span>
+                        <img src={camera} alt="camera" />
+                    </label>
+                    <input id="file" type="file" onChange={uploadImage} accept="image/*" />
+                    <img src={imageUrl} alt="profile-pic" />
                 </div>
-                <div className="form__wrapper">
-                    <form onSubmit={handleSubmit} >
-                        <FormGroup
-                            type="text"
-                            id="name"
-                            label="Name"
-                            value={values.name}
-                            handleChange={handleChange}
-                        />
-                        <FormGroup
-                            type="email"
-                            id="email"
-                            label="Email"
-                            value={values.email}
-                            handleChange={handleChange}
-                        />
-                        <FormGroup
-                            type="text"
-                            id="location"
-                            label="Location"
-                            value={values.location}
-                            handleChange={handleChange}
-                        />
-                        <FormGroup
-                            type="submit"
-                            value={formStatus}
-                        />
-                    </form>
-                </div>
-            </section>
-        </>
+            </div>
+            <div className="form__wrapper">
+                <form onSubmit={handleSubmit} >
+                    <FormGroup
+                        type="text"
+                        id="name"
+                        label="Name"
+                        value={values.name}
+                        handleChange={handleChange}
+                    />
+                    <FormGroup
+                        type="email"
+                        id="email"
+                        label="Email"
+                        value={values.email}
+                        handleChange={handleChange}
+                    />
+                    <FormGroup
+                        type="text"
+                        id="location"
+                        label="Location"
+                        value={values.location}
+                        handleChange={handleChange}
+                    />
+                    <FormGroup
+                        type="submit"
+                        value={formStatus}
+                    />
+                </form>
+            </div>
+        </section>
     );
 };
 

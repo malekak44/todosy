@@ -31,9 +31,11 @@ const AppProvider = ({ children }) => {
         try {
             const { data } = await axios.get(`${url}/user/showMe`, { withCredentials: true });
             setUser(data.user);
+            setIsLoading(false);
         } catch (error) {
             setUser(null);
             console.log(error);
+            setIsLoading(false);
         }
     }
 
@@ -161,7 +163,6 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         fetchUser();
         fetchQuote();
-        setIsLoading(false);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

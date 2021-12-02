@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Loading from './components/Loading';
 import ResetPassword from './pages/ResetPassword';
+import RequireAuth from './components/RequireAuth';
 import ForgotPassword from './pages/ForgotPassword';
 import { useGlobalContext } from './context/AppContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -36,11 +37,23 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/todos" element={<Todos />} />
-        <Route path="/today" element={<Today />} />
+        <Route path="/todos" element={
+          <RequireAuth>
+            <Todos />
+          </RequireAuth>
+        } />
+        <Route path="/today" element={
+          <RequireAuth>
+            <Today />
+          </RequireAuth>
+        } />
+        <Route path="/profile" element={
+          <RequireAuth>
+            <Profile />
+          </RequireAuth>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<NotFound />} />
