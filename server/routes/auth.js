@@ -4,6 +4,7 @@ const {
     register,
     login,
     logout,
+    resetPassword,
     forgotPassword,
 } = require('../controllers/auth');
 const authenticateUser = require('../middleware/auth');
@@ -23,5 +24,9 @@ router
 router
     .route('/forgot-password')
     .post(forgotPassword);
+
+router
+    .route('/reset-password')
+    .post(resetPassword);
 
 module.exports = router;

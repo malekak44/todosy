@@ -75,7 +75,7 @@ const forgotPassword = async (req, res) => {
     });
 
     const tenMinutes = 1000 * 60 * 10;
-    const passwordTokenExpirationDate = new Date(Date.now() + tenMinutes);
+    const passwordTokenExpirationDate = new Date(Date.now() + tenMinutes).toISOString();
 
     user.passwordToken = passwordToken;
     user.passwordTokenExpirationDate = passwordTokenExpirationDate;
@@ -84,9 +84,33 @@ const forgotPassword = async (req, res) => {
     res.status(StatusCodes.OK).json({ msg: 'Please check your inbox' });
 }
 
+const resetPassword = async (req, res) => {
+    const { email, password, passwordToken } = req.body;
+    if (!email, !password, !passwordToken) {
+        throw new Errors.BadRequestError('Please provide all values');
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+        throw new Errors.UnauthenticatedError('User does not exist');
+    }
+
+    const currentDate = new Date().toISOString();
+
+    if (user.passwordToken === passwordToken && user.passwordTokenExpirationDate > currentDate) {
+        user.password = password;
+        user.passwordToken = null;
+        user.passwordTokenExpirationDate = null;
+        await user.save();
+    }
+
+    res.status(StatusCodes.OK).json({ msg: 'Password reseted successfully' });
+}
+
 module.exports = {
     register,
     login,
     logout,
+    resetPassword,
     forgotPassword,
 }

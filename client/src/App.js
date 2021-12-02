@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Loading from './components/Loading';
+import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import { useGlobalContext } from './context/AppContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

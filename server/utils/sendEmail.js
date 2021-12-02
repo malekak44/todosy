@@ -11,13 +11,13 @@ const transporter = nodemailer.createTransport({
 
 const sendEmail = ({ name, email, passwordToken, origin }) => {
     const resetUrl = `${origin}/reset-password?token=${passwordToken}&email=${email}`;
-    const message = `<h3>Please reset password by clicking on the following link : <a href="${resetUrl}">Reset Password</a></h3>`;
+    const message = `<p>Please reset password by clicking on the following link : <a href="${resetUrl}">Reset Password</a></p>`;
 
     transporter.sendMail({
         from: 'Todosy <malekak44@gmail.com>',
         to: email,
         subject: 'Reset Password',
-        html: `<h2>Hello, ${name}</h2> 
+        html: `<h3>Hello, ${name}</h3> 
         ${message}`,
     });
 }
