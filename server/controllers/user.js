@@ -1,18 +1,13 @@
 const Errors = require('../errors');
 const User = require('../models/User');
+const { filterUser } = require('../utils');
 const cloudinary = require('cloudinary').v2;
 const { StatusCodes } = require('http-status-codes');
 
 const getUser = async (req, res) => {
     const userId = req.user.userId;
     const user = await User.findOne({ _id: userId });
-    const filteredUser = {
-        _id: userId,
-        name: user.name,
-        email: user.email,
-        image: user.image,
-        location: user.location
-    };
+    const filteredUser = filterUser(userId, user);
 
     res.status(StatusCodes.OK).json({ user: filteredUser });
 }

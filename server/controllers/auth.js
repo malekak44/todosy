@@ -1,5 +1,6 @@
 const {
     sendEmail,
+    filterUser,
     createTokenUser,
     authorizeToken
 } = require('../utils');
@@ -24,8 +25,9 @@ const register = async (req, res) => {
     const user = await User.create({ name, email, password });
     const tokenUser = createTokenUser(user);
     await authorizeToken(req, res, tokenUser);
+    const filteredUser = filterUser(user._id, user);
 
-    res.status(StatusCodes.CREATED).json({ user: tokenUser });
+    res.status(StatusCodes.CREATED).json({ user: filteredUser });
 }
 
 const login = async (req, res) => {
@@ -47,8 +49,9 @@ const login = async (req, res) => {
 
     const tokenUser = createTokenUser(user);
     await authorizeToken(req, res, tokenUser);
+    const filteredUser = filterUser(user._id, user);
 
-    res.status(StatusCodes.CREATED).json({ user: tokenUser });
+    res.status(StatusCodes.CREATED).json({ user: filteredUser });
 }
 
 const logout = async (req, res) => {
