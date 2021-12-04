@@ -2,8 +2,16 @@ import axios from "axios";
 import { url } from "../utils/url";
 import React, { createContext, useContext, useState, useEffect } from "react";
 axios.defaults.withCredentials = true;
-
 const AppContext = createContext();
+
+const getLocalStorage = () => {
+    const theme = localStorage.getItem("dark");
+    if (theme) {
+        return theme;
+    } else {
+        return false;
+    }
+}
 
 const AppProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -12,10 +20,11 @@ const AppProvider = ({ children }) => {
     const [filter, setFilter] = useState('');
     const [isToday, setIsToday] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    const [darkTheme, setDarkTheme] = useState(false);
+    const [darkTheme, setDarkTheme] = useState(getLocalStorage());
 
     const setTheme = () => {
         setDarkTheme(!darkTheme);
+        localStorage.setItem('dark', JSON.stringify(!darkTheme));
     }
 
     const fetchQuote = async () => {
