@@ -11,8 +11,8 @@ const Profile = () => {
     const [formStatus, setFormStatus] = useState('Save');
     const [isUploading, setIsUploading] = useState(false);
     const [values, setValues] = useState({
-        name: user?.name,
-        email: user?.email,
+        name: user.name,
+        email: user.email,
         image: user?.image,
         location: user?.location
     });

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import FormGroup from '../components/FormGroup';
+import useLocalState from '../utils/localState';
 import { useGlobalContext } from '../context/AppContext';
 
 const ForgotPassword = () => {
     const [value, setValue] = useState('');
-    const [alert, setAlert] = useState('Submit');
+    const {
+        alert,
+        showAlert,
+        hideAlert,
+    } = useLocalState();
     const { forgotPassword } = useGlobalContext();
 
     const handleChange = (e) => {
@@ -12,28 +17,39 @@ const ForgotPassword = () => {
     }
 
     const handleSubmit = (e) => {
+        hideAlert();
         e.preventDefault();
         forgotPassword({ email: value })
-            .then(data => setAlert(data));
+            .then(data => showAlert({
+                text: data.msg,
+                type: data.type
+            }));
     }
 
     return (
-        <section className="form__wrapper container">
-            <h3>Forgot Password</h3>
-            <form onSubmit={handleSubmit}>
-                <FormGroup
-                    type="email"
-                    id="email"
-                    label="Email"
-                    value={value}
-                    handleChange={handleChange}
-                />
-                <FormGroup
-                    type="submit"
-                    value={alert}
-                />
-            </form>
-        </section>
+        <>
+            {alert.show && (
+                <div className={`alert alert-${alert.type}`}>
+                    <p>{alert.text}</p>
+                </div>
+            )}
+            <section className="form__wrapper container">
+                <h3>Forgot Password</h3>
+                <form onSubmit={handleSubmit}>
+                    <FormGroup
+                        type="email"
+                        id="email"
+                        label="Email"
+                        value={value}
+                        handleChange={handleChange}
+                    />
+                    <FormGroup
+                        type="submit"
+                        value="Submit"
+                    />
+                </form>
+            </section>
+        </>
     );
 };
 

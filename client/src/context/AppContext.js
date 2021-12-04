@@ -48,30 +48,29 @@ const AppProvider = ({ children }) => {
         }
     }
 
-    const signup = async (user, callback) => {
+    const signup = async (user) => {
         try {
             const { data } = await axios.post(`${url}/auth/register`, user, { withCredentials: true });
             setUser(data.user);
-            await callback();
         } catch (error) {
-            console.log(error);
+            return error.response.data.msg;
         }
     }
 
-    const login = async (user, callback) => {
+    const login = async (user) => {
         try {
             const { data } = await axios.post(`${url}/auth/login`, user, { withCredentials: true });
             setUser(data.user);
-            await callback();
         } catch (error) {
-            console.log(error)
+            return error.response.data.msg;
         }
     }
 
     const logout = async () => {
         try {
             await axios.delete(`${url}/auth/logout`, { withCredentials: true });
-            await fetchUser();
+            setQuote('');
+            setUser(null);
         } catch (error) {
             console.log(error);
         }
@@ -80,18 +79,18 @@ const AppProvider = ({ children }) => {
     const forgotPassword = async (payload) => {
         try {
             const { data } = await axios.post(`${url}/auth/forgot-password`, payload, { withCredentials: true });
-            return data.msg;
+            return { msg: data.msg, type: 'success' };
         } catch (error) {
-            console.log(error);
+            return { msg: error.response.data.msg, type: 'danger' };
         }
     }
 
     const resetPassword = async (payload) => {
         try {
             const { data } = await axios.post(`${url}/auth/reset-password`, payload, { withCredentials: true });
-            return data.msg;
+            return { msg: data.msg, type: 'success' };
         } catch (error) {
-            console.log(error);
+            return { msg: error.response.data.msg, type: 'danger' };
         }
     }
 

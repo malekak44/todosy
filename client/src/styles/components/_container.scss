@@ -1,6 +1,6 @@
 .container {
     max-width: 90%;
-    margin: 6rem auto;
+    margin: 12rem auto;
     border-radius: 0.5rem;
     background: var(--bg-component);
     box-shadow: var(--component-shadow);
@@ -8,7 +8,6 @@
 
     @include breakpoint-up(large) {
         max-width: 54rem;
-        margin: 12rem auto;
     }
 
     img {

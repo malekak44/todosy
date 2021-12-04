@@ -12,6 +12,10 @@ const { StatusCodes } = require('http-status-codes');
 const register = async (req, res) => {
     const { name, email, password } = req.body;
 
+    if (!name || !email || !password) {
+        throw new Errors.BadRequestError('Please provide all values');
+    }
+
     const emailAlreadyExists = await User.findOne({ email });
     if (emailAlreadyExists) {
         throw new Errors.BadRequestError('Email already exists');
@@ -28,7 +32,7 @@ const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        throw new Errors.BadRequestError('Please provide email and password.');
+        throw new Errors.BadRequestError('Please provide all values');
     }
 
     const user = await User.findOne({ email });
