@@ -59,8 +59,13 @@ const AppProvider = ({ children }) => {
         }
     }
 
-    const logout = () => {
-        setUser(null);
+    const logout = async () => {
+        try {
+            await axios.delete(`${url}/auth/logout`, { withCredentials: true });
+            await fetchUser();
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const forgotPassword = async (payload) => {

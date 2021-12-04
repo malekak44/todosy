@@ -48,9 +48,10 @@ const login = async (req, res) => {
 }
 
 const logout = async (req, res) => {
+    const cookies = ['accessToken', 'refreshToken'];
+    cookies.forEach(cookie => res.clearCookie(cookie));
+
     res
-        .clearCookie('accessToken')
-        .clearCookie('refreshToken')
         .status(StatusCodes.OK)
         .json({ msg: 'user logged out' });
 }

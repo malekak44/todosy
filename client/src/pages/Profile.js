@@ -2,8 +2,8 @@ import axios from 'axios';
 import { url } from '../utils/url';
 import React, { useState } from 'react';
 import camera from '../assets/camera.png';
-import demoPic from '../assets/demo-pic.png';
 import FormGroup from '../components/FormGroup';
+import defaultUser from '../assets/default-user.jpg';
 import { useGlobalContext } from '../context/AppContext';
 
 const Profile = () => {
@@ -16,7 +16,7 @@ const Profile = () => {
         image: user?.image,
         location: user?.location
     });
-    const [imageUrl, setImageUrl] = useState(values.image ? values.image : demoPic);
+    const [imageUrl, setImageUrl] = useState(values.image ? values.image : defaultUser);
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });

@@ -55,6 +55,10 @@
 
         .deadline {
             color: var(--text-3);
+
+            @media (max-width:375px) {
+                display: none;
+            }
         }
 
         button {

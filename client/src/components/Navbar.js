@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useRef, useState } from "react";
 import quoteLeft from "../assets/quote-left.png";
 import quoteRight from "../assets/quote-right.png";
+import defaultUser from "../assets/default-user.jpg";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { useGlobalContext } from "../context/AppContext";
 
@@ -15,7 +16,8 @@ const Navbar = () => {
     const overlay = overlayRef.current;
     const fadeElements = [menu, overlay];
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-    const { quote, user, darkTheme, setTheme } = useGlobalContext();
+    const [isLogoutOpen, setIsLogoutOpen] = useState(false);
+    const { quote, user, logout, darkTheme, setTheme } = useGlobalContext();
 
     const closeNavbar = () => {
         setIsNavbarOpen(false);
@@ -83,6 +85,23 @@ const Navbar = () => {
                         <BsSunFill onClick={setTheme} className="navbar__icon" /> :
                         <BsMoonFill onClick={setTheme} className="navbar__icon" />
                     }
+                    {user ?
+                        <div className="navbar__profile">
+                            <img
+                                onClick={() => setIsLogoutOpen(!isLogoutOpen)}
+                                src={user?.image || defaultUser}
+                                alt={user.name}
+                            />
+                            <div className={isLogoutOpen ? 'open' : ''}>
+                                <p
+                                    onClick={() => {
+                                        logout();
+                                        setIsLogoutOpen(false);
+                                    }}
+                                >Logout</p>
+                            </div>
+                        </div> : ''
+                    }
                 </div>
             </nav>
             <div
@@ -91,8 +110,9 @@ const Navbar = () => {
             >
                 {user ?
                     <>
-                        <Link to="/today">Today</Link>
-                        <Link to="profile">Profile</Link>
+                        <Link to="/today" onClick={closeNavbar}>Today</Link>
+                        <Link to="profile" onClick={closeNavbar}>Profile</Link>
+                        <p onClick={() => { logout(); closeNavbar(); }}>Logout</p>
                     </> : <>
                         <Link to="/" onClick={closeNavbar}>Home</Link>
                         <Link to="/login" onClick={closeNavbar}>Login</Link>
