@@ -17,8 +17,10 @@ const ResetPassword = () => {
     });
     const {
         alert,
+        loading,
         showAlert,
         hideAlert,
+        setLoading,
     } = useLocalState();
     const { resetPassword } = useGlobalContext();
 
@@ -27,6 +29,7 @@ const ResetPassword = () => {
     }
 
     const handleSubmit = (e) => {
+        setLoading(true);
         hideAlert();
         e.preventDefault();
         if (values.newPassword === values.retypedPassword) {
@@ -43,6 +46,7 @@ const ResetPassword = () => {
         } else {
             showAlert({ text: 'Password doesn\'t match' });
         }
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -60,7 +64,9 @@ const ResetPassword = () => {
                     <p>{alert.text}</p>
                 </div>
             )}
-            <section className="form__wrapper container">
+            <section
+                className={`form__wrapper container${loading ? ' container__loading' : ''}`}
+            >
                 <h3>Reset Password</h3>
                 <form onSubmit={handleSubmit}>
                     <FormGroup

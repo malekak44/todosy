@@ -7,8 +7,10 @@ const ForgotPassword = () => {
     const [value, setValue] = useState('');
     const {
         alert,
+        loading,
         showAlert,
         hideAlert,
+        setLoading,
     } = useLocalState();
     const { forgotPassword } = useGlobalContext();
 
@@ -17,6 +19,7 @@ const ForgotPassword = () => {
     }
 
     const handleSubmit = (e) => {
+        setLoading(true);
         hideAlert();
         e.preventDefault();
         forgotPassword({ email: value })
@@ -24,6 +27,7 @@ const ForgotPassword = () => {
                 text: data.msg,
                 type: data.type
             }));
+        setLoading(false);
     }
 
     return (
@@ -33,7 +37,9 @@ const ForgotPassword = () => {
                     <p>{alert.text}</p>
                 </div>
             )}
-            <section className="form__wrapper container">
+            <section
+                className={`form__wrapper container${loading ? ' container__loading' : ''}`}
+            >
                 <h3>Forgot Password</h3>
                 <form onSubmit={handleSubmit}>
                     <FormGroup

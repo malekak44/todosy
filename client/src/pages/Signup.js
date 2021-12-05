@@ -13,8 +13,10 @@ const Signup = () => {
     });
     const {
         alert,
+        loading,
         showAlert,
         hideAlert,
+        setLoading,
     } = useLocalState();
     const { user, signup } = useGlobalContext();
 
@@ -23,11 +25,13 @@ const Signup = () => {
     };
 
     const handleSubmit = (e) => {
+        setLoading(true);
         hideAlert();
         e.preventDefault();
         const { name, email, password } = values;
         const newUser = { name, email, password };
         signup(newUser).then(data => showAlert({ text: data }));
+        setLoading(false);
     }
 
     return (
@@ -39,7 +43,9 @@ const Signup = () => {
                             <p>{alert.text}</p>
                         </div>
                     )}
-                    <section className="container">
+                    <section
+                        className={`container${loading ? ' container__loading' : ''}`}
+                    >
                         <img src={signupImg} alt="signup-img" />
                         <div className="form__wrapper">
                             <h3>Sign Up</h3>

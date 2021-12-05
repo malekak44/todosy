@@ -18,8 +18,10 @@ const Profile = () => {
     });
     const {
         alert,
+        loading,
         showAlert,
         hideAlert,
+        setLoading,
     } = useLocalState();
     const [imageUrl, setImageUrl] = useState(values.image ? values.image : defaultUser);
 
@@ -42,6 +44,7 @@ const Profile = () => {
     }
 
     const handleSubmit = (e) => {
+        setLoading(true);
         hideAlert();
         e.preventDefault();
         const { name, email, location } = values;
@@ -56,6 +59,7 @@ const Profile = () => {
                 hideAlert();
             }, 3000);
         }
+        setLoading(false);
     }
 
     return (
@@ -65,7 +69,9 @@ const Profile = () => {
                     <p>{alert.text}</p>
                 </div>
             )}
-            <section className="profile container">
+            <section
+                className={`profile container${loading ? ' container__loading' : ''}`}
+            >
                 <div className="profile__picture">
                     <div className="profile__picture__wrapper">
                         <label htmlFor="file" className={isUploading ? 'upload' : ''}>

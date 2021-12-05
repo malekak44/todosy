@@ -12,8 +12,10 @@ const Login = () => {
     });
     const {
         alert,
+        loading,
         showAlert,
         hideAlert,
+        setLoading,
     } = useLocalState();
     const { user, login } = useGlobalContext();
     const [isChecked, setIsChecked] = useState(true);
@@ -27,11 +29,13 @@ const Login = () => {
     }
 
     const handleSubmit = (e) => {
+        setLoading(true);
         hideAlert();
         e.preventDefault();
         const { email, password } = values;
         const user = { email, password };
-        login(user).then(data => showAlert({ text: data }))
+        login(user).then(data => showAlert({ text: data }));
+        setLoading(false);
     }
 
     return (
@@ -43,7 +47,9 @@ const Login = () => {
                             <p>{alert.text}</p>
                         </div>
                     )}
-                    < section className="container">
+                    <section
+                        className={`container${loading ? ' container__loading' : ''}`}
+                    >
                         <img src={loginImg} alt="login-img" />
                         <div className="form__wrapper">
                             <h3>Log In</h3>

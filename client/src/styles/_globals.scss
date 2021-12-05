@@ -22,6 +22,8 @@
     --blue-24: #2d314d;
     --blue-61: #3a7cfd;
     --blue-85: #C8CBE7;
+    --white-20: #ffffff33;
+    --white-60: #ffffff99;
     --charcoal-11: #171823;
     --charcoal-19: #25273D;
     --charcoal-26: #393A4B;
@@ -41,6 +43,7 @@
     --bg-app: var(--gray-98);
     --overlay: var(--blue-24);
     --checkbox: var(--gray-92);
+    --loading: var(--white-60);
     --bg-component: var(--white);
     --border: 1px solid var(--gray-92);
     --bg-img-mobile: url('../assets/bg-mobile-light.jpg');
@@ -52,6 +55,7 @@
     --text-1: var(--blue-85);
     --text-2: var(--gray-61);
     --overlay: var(--blue-19);
+    --loading: var(--white-20);
     --text-3: var(--charcoal-43);
     --text-4: var(--charcoal-43);
     --text-5: var(--charcoal-35);
