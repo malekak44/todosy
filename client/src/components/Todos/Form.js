@@ -24,7 +24,7 @@ const Form = () => {
                 title: values.title,
                 deadline: isToday
                     ? new Date()
-                    : values.deadline,
+                    : values.deadline || new Date(),
             }
             createTodo(todo);
             setValues({
@@ -37,7 +37,7 @@ const Form = () => {
 
     return (
         <form className="todos__form" onSubmit={handleSubmit}>
-            <div className={isFocusing ? "checkbox focusing" : "checkbox"}></div>
+            <div className={`checkbox ${isFocusing ? "focusing" : ""}`}></div>
             <input
                 type="text"
                 name="title"

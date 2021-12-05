@@ -1,41 +1,48 @@
 .todo {
     &__item {
-        display: grid;
-        align-items: center;
         padding: 1.6rem 2rem;
         border-bottom: var(--border);
-        grid-template-columns: 0.5fr 4fr 1fr 0.5fr;
-        transition: var(--transition) border-bottom;
+        background: var(--bg-component);
+        transition: var(--transition) all;
+        @include flexbox(center, flex-start);
+
+        &.updating {
+            border-image-slice: 1;
+            border-bottom: 1px solid;
+            grid-template-columns: 0.5fr 6fr 0.5fr;
+            border-image-source: linear-gradient(135deg, $skyBlue, $purple);
+        }
 
         @include breakpoint-up(large) {
             padding: 2rem 2.4rem;
-            grid-template-columns: 0.5fr 5fr 1fr 0.5fr;
         }
 
-        @include breakpoint-up(medium) {
-            grid-template-columns: 0.5fr 6fr 1fr 0.6fr;
-        }
+        form {
+            flex: 0.965;
+            @include flexbox(center, center);
 
-        &.today__item {
-            grid-template-columns: 0.5fr 4fr 0.5fr;
+            input {
+                border: none;
+                outline: none;
+                background: none;
+                font-size: 1.4rem;
+                margin-top: 0.3rem;
+                font-family: inherit;
+                color: var(--text-1);
 
-            @include breakpoint-up(large) {
-                grid-template-columns: 0.5fr 5fr 0.5fr;
-            }
-        }
+                @include breakpoint-up(large) {
+                    font-size: 1.75rem;
+                }
 
-        input {
-            width: 100%;
-            border: none;
-            outline: none;
-            background: none;
-            font-size: 1.4rem;
-            margin-top: 0.3rem;
-            font-family: inherit;
-            color: var(--text-1);
+                &[type=text] {
+                    width: 85%;
+                }
 
-            @include breakpoint-up(large) {
-                font-size: 1.75rem;
+                &[type=date] {
+                    @media (max-width:375px) {
+                        display: none;
+                    }
+                }
             }
         }
 
@@ -51,13 +58,22 @@
             &::first-letter {
                 text-transform: capitalize;
             }
-        }
 
-        .deadline {
-            color: var(--text-3);
+            &.title {
+                flex: 1;
+            }
 
-            @media (max-width:375px) {
-                display: none;
+            &.deadline {
+                width: 5.2rem;
+                color: var(--text-3);
+
+                @include breakpoint-up(large) {
+                    width: 6.4rem;
+                }
+
+                @media (max-width:375px) {
+                    display: none;
+                }
             }
         }
 
@@ -69,7 +85,7 @@
                 width: 1.25rem;
                 height: 1.5rem;
                 background: none;
-                justify-self: flex-end;
+                margin-left: auto;
                 background-size: cover;
                 background-position: 50%;
                 background-repeat: no-repeat;

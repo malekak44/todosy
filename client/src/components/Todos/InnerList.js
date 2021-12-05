@@ -6,7 +6,7 @@ import { useGlobalContext } from '../../context/AppContext';
 const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: "none",
   ...draggableStyle
-})
+});
 
 const InnerList = memo(function InnerList({ todos }) {
   const { filter } = useGlobalContext();

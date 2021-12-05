@@ -16,9 +16,8 @@
     }
 
     @at-root .filter__buttons {
+        margin: auto;
         display: flex;
-        margin-right: auto;
-        margin-left: 9.6rem;
 
         .active-btn {
             margin-left: 1.9rem;

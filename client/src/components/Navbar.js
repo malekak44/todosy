@@ -50,7 +50,7 @@ const Navbar = () => {
             <div
                 ref={overlayRef}
                 onClick={closeNavbar}
-                className="overlay has-fade hide-for-desktop"
+                className="overlay has-fade"
             ></div>
             <nav>
                 <Link to={user ? "/todos" : "/"} className="navbar__logo">
@@ -106,7 +106,7 @@ const Navbar = () => {
             </nav>
             <div
                 ref={menuRef}
-                className="navbar__menu has-fade hide-for-desktop"
+                className="navbar__menu has-fade"
             >
                 {user ?
                     <>

@@ -2,8 +2,11 @@
     max-width: 90%;
     margin: 6rem auto;
 
+    @include breakpoint-up(large) {
+        max-width: 70rem;
+    }
+
     @include breakpoint-up(medium) {
-        max-width: 54rem;
         margin: 7.5rem auto;
     }
 
