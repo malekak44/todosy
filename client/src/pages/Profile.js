@@ -3,12 +3,12 @@ import { url } from '../utils/url';
 import React, { useState } from 'react';
 import camera from '../assets/camera.png';
 import FormGroup from '../components/FormGroup';
+import useLocalState from '../utils/localState';
 import defaultUser from '../assets/default-user.jpg';
 import { useGlobalContext } from '../context/AppContext';
 
 const Profile = () => {
     const { user, updateUser } = useGlobalContext();
-    const [formStatus, setFormStatus] = useState('Save');
     const [isUploading, setIsUploading] = useState(false);
     const [values, setValues] = useState({
         name: user.name,
@@ -16,6 +16,11 @@ const Profile = () => {
         image: user?.image,
         location: user?.location
     });
+    const {
+        alert,
+        showAlert,
+        hideAlert,
+    } = useLocalState();
     const [imageUrl, setImageUrl] = useState(values.image ? values.image : defaultUser);
 
     const handleChange = (e) => {
@@ -37,56 +42,71 @@ const Profile = () => {
     }
 
     const handleSubmit = (e) => {
-        setFormStatus('Saving...');
+        hideAlert();
         e.preventDefault();
         const { name, email, location } = values;
-        const editedUser = { name, email, image: imageUrl, location };
-        updateUser(editedUser);
-        setFormStatus('Saved');
+
+        if (!email || !name) {
+            showAlert({ text: 'Please provide name and email' });
+        } else {
+            const editedUser = { name, email, image: imageUrl, location };
+            updateUser(editedUser);
+            showAlert({ text: 'Profile info saved', type: 'success' });
+            setTimeout(() => {
+                hideAlert();
+            }, 3000);
+        }
     }
 
     return (
-        <section className="profile container">
-            <div className="profile__picture">
-                <div className="profile__picture__wrapper">
-                    <label htmlFor="file" className={isUploading ? 'upload' : ''}>
-                        <span>{isUploading ? 'Uploading...' : ''}</span>
-                        <img src={camera} alt="camera" />
-                    </label>
-                    <input id="file" type="file" onChange={uploadImage} accept="image/*" />
-                    <img src={imageUrl} alt="profile-pic" />
+        <>
+            {alert.show && (
+                <div className={`alert alert-${alert.type}`}>
+                    <p>{alert.text}</p>
                 </div>
-            </div>
-            <div className="form__wrapper">
-                <form onSubmit={handleSubmit} >
-                    <FormGroup
-                        type="text"
-                        id="name"
-                        label="Name"
-                        value={values.name}
-                        handleChange={handleChange}
-                    />
-                    <FormGroup
-                        type="email"
-                        id="email"
-                        label="Email"
-                        value={values.email}
-                        handleChange={handleChange}
-                    />
-                    <FormGroup
-                        type="text"
-                        id="location"
-                        label="Location"
-                        value={values.location}
-                        handleChange={handleChange}
-                    />
-                    <FormGroup
-                        type="submit"
-                        value={formStatus}
-                    />
-                </form>
-            </div>
-        </section>
+            )}
+            <section className="profile container">
+                <div className="profile__picture">
+                    <div className="profile__picture__wrapper">
+                        <label htmlFor="file" className={isUploading ? 'upload' : ''}>
+                            <span>{isUploading ? 'Uploading...' : ''}</span>
+                            <img src={camera} alt="camera" />
+                        </label>
+                        <input id="file" type="file" onChange={uploadImage} accept="image/*" />
+                        <img src={imageUrl} alt="profile-pic" />
+                    </div>
+                </div>
+                <div className="form__wrapper">
+                    <form onSubmit={handleSubmit} >
+                        <FormGroup
+                            type="text"
+                            id="name"
+                            label="Name"
+                            value={values.name}
+                            handleChange={handleChange}
+                        />
+                        <FormGroup
+                            type="email"
+                            id="email"
+                            label="Email"
+                            value={values.email}
+                            handleChange={handleChange}
+                        />
+                        <FormGroup
+                            type="text"
+                            id="location"
+                            label="Location"
+                            value={values.location}
+                            handleChange={handleChange}
+                        />
+                        <FormGroup
+                            type="submit"
+                            value="Save"
+                        />
+                    </form>
+                </div>
+            </section>
+        </>
     );
 };
 

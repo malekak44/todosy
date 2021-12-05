@@ -24,7 +24,9 @@ const updateUser = async (req, res) => {
         throw new Errors.NotFoundError(`No user found with id: ${userId}`);
     }
 
-    res.status(StatusCodes.OK).json({ user: user });
+    const filteredUser = filterUser(userId, user);
+
+    res.status(StatusCodes.OK).json({ user: filteredUser });
 }
 
 const uploadImage = async (req, res) => {
