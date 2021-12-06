@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import FormGroup from '../components/FormGroup';
 import useLocalState from '../utils/localState';
+import FormGroup from '../components/Common/FormGroup';
 import { useGlobalContext } from '../context/AppContext';
 
 const ForgotPassword = () => {

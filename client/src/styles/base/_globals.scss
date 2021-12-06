@@ -30,8 +30,8 @@
     --charcoal-35: #4D5067;
     --charcoal-43: #5B5E7E;
     --transition: 0.3s ease-in-out;
-    --bg-icon-cross: url('../assets/icon-cross.svg');
-    --bg-icon-cross-hover: url('../assets/icon-cross-hover.svg');
+    --bg-icon-cross: url('../../assets/icon-cross.svg');
+    --bg-icon-cross-hover: url('../../assets/icon-cross-hover.svg');
 }
 
 .light {
@@ -46,8 +46,8 @@
     --loading: var(--white-60);
     --bg-component: var(--white);
     --border: 1px solid var(--gray-92);
-    --bg-img-mobile: url('../assets/bg-mobile-light.jpg');
-    --bg-img-desktop: url('../assets/bg-desktop-light.jpg');
+    --bg-img-mobile: url('../../assets/bg-mobile-light.jpg');
+    --bg-img-desktop: url('../../assets/bg-desktop-light.jpg');
     --component-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.50);
 }
 
@@ -63,8 +63,8 @@
     --checkbox: var(--charcoal-26);
     --bg-component: var(--charcoal-19);
     --border: 1px solid var(--charcoal-26);
-    --bg-img-mobile: url('../assets/bg-mobile-dark.jpg');
-    --bg-img-desktop: url('../assets/bg-desktop-dark.jpg');
+    --bg-img-mobile: url('../../assets/bg-mobile-dark.jpg');
+    --bg-img-desktop: url('../../assets/bg-desktop-dark.jpg');
     --component-shadow: 0 35px 50px -15px rgba(0, 0, 0, 0.50);
 }
 

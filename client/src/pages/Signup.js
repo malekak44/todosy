@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import FormGroup from '../components/FormGroup';
 import useLocalState from '../utils/localState';
 import signupImg from '../assets/signup-img.jpg';
 import { Link, Navigate } from 'react-router-dom';
+import FormGroup from '../components/Common/FormGroup';
 import { useGlobalContext } from '../context/AppContext';
 
 const Signup = () => {

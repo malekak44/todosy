@@ -6,13 +6,13 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar';
-import Loading from './components/Loading';
-import AppHeader from './components/AppHeader';
+import Navbar from './components/Common/Navbar';
+import Loading from './components/Common/Loading';
 import ResetPassword from './pages/ResetPassword';
-import RequireAuth from './components/RequireAuth';
 import ForgotPassword from './pages/ForgotPassword';
+import AppHeader from './components/Common/AppHeader';
 import { useGlobalContext } from './context/AppContext';
+import RequireAuth from './components/Common/RequireAuth';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function App() {

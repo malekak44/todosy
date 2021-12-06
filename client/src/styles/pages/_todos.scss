@@ -10,11 +10,11 @@
         margin: 7.5rem auto;
     }
 
-    @import '../todos/header';
     @import '../todos/form';
-    @import '../todos/wrapper';
     @import '../todos/todo';
-    @import '../todos/filter';
     @import '../todos/guide';
+    @import '../todos/header';
+    @import '../todos/filter';
+    @import '../todos/wrapper';
     @import '../todos/empty-list';
 }

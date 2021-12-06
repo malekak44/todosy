@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import loginImg from '../assets/login-img.jpg';
-import FormGroup from '../components/FormGroup';
 import useLocalState from '../utils/localState';
 import { Link, Navigate } from 'react-router-dom';
+import FormGroup from '../components/Common/FormGroup';
 import { useGlobalContext } from '../context/AppContext';
 
 const Login = () => {

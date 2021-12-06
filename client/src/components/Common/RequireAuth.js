@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
-import { useGlobalContext } from '../context/AppContext';
+import { useGlobalContext } from '../../context/AppContext';
 
 const RequireAuth = ({ children }) => {
     let location = useLocation();

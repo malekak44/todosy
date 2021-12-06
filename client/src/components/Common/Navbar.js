@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import React, { useRef, useState } from "react";
-import quoteLeft from "../assets/quote-left.png";
-import quoteRight from "../assets/quote-right.png";
-import defaultUser from "../assets/default-user.jpg";
+import quoteLeft from "../../assets/quote-left.png";
+import quoteRight from "../../assets/quote-right.png";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
-import { useGlobalContext } from "../context/AppContext";
+import defaultUser from "../../assets/default-user.jpg";
+import { useGlobalContext } from "../../context/AppContext";
 
 const Navbar = () => {
     const menuRef = useRef(null);

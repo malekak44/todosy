@@ -2,9 +2,9 @@ import axios from 'axios';
 import { url } from '../utils/url';
 import React, { useState } from 'react';
 import camera from '../assets/camera.png';
-import FormGroup from '../components/FormGroup';
 import useLocalState from '../utils/localState';
 import defaultUser from '../assets/default-user.jpg';
+import FormGroup from '../components/Common/FormGroup';
 import { useGlobalContext } from '../context/AppContext';
 
 const Profile = () => {

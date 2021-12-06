@@ -1,5 +1,6 @@
-@import './styles/variables';
-@import './styles/mixins';
-@import './styles/animation';
-@import './styles/globals';
-@import './styles/components';
+@import './styles/base/animation';
+@import './styles/base/mixins';
+@import './styles/base/variables';
+@import './styles/base/globals';
+@import './styles/base/pages';
+@import './styles/base/components';

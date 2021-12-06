@@ -1,6 +1,6 @@
-import FormGroup from '../components/FormGroup';
 import useLocalState from '../utils/localState';
 import React, { useEffect, useState } from 'react';
+import FormGroup from '../components/Common/FormGroup';
 import { useGlobalContext } from '../context/AppContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 
