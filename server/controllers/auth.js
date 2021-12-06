@@ -7,7 +7,7 @@ const {
 const crypto = require('crypto');
 const Errors = require('../errors');
 const User = require('../models/User');
-const origin = 'http://localhost:3000';
+const origin = 'https://todosy.vercel.app';
 const { StatusCodes } = require('http-status-codes');
 
 const register = async (req, res) => {

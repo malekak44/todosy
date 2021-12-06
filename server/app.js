@@ -29,11 +29,14 @@ app.set('trust proxy', 1);
 app.use(
     rateLimiter({
         windowMs: 15 * 60 * 1000,
-        max: 1000,
+        max: 200,
     })
 );
 app.use(xss());
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({
+    credentials: true,
+    origin: 'https://todosy.vercel.app'
+}));
 app.use(helmet());
 app.use(mongoSanitize());
 app.use(cookieParser(process.env.JWT_SECRET));
