@@ -5,7 +5,7 @@ import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { SET_QUOTE, SET_USER, SET_IS_TODAY, SET_TODOS, SET_DARK_THEME, SET_FILTER } from "./actions";
 
 const AppContext = createContext();
-axios.defaults.withCredentials = true;
+const config = { withCredentials: true };
 
 const getLocalStorage = () => {
     const theme = localStorage.getItem("dark");
@@ -53,7 +53,7 @@ const AppProvider = ({ children }) => {
 
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get(`${url}/user/showMe`, { withCredentials: true });
+            const { data } = await axios.get(`${url}/user/showMe`, config);
             dispatch({ type: SET_USER, payload: data.user });
         } catch (error) {
             dispatch({ type: SET_USER, payload: null });
@@ -62,7 +62,7 @@ const AppProvider = ({ children }) => {
 
     const signup = async (user) => {
         try {
-            const { data } = await axios.post(`${url}/auth/register`, user, { withCredentials: true });
+            const { data } = await axios.post(`${url}/auth/register`, user, config);
             dispatch({ type: SET_USER, payload: data.user });
         } catch (error) {
             return error.response.data.msg;
@@ -71,7 +71,7 @@ const AppProvider = ({ children }) => {
 
     const login = async (user) => {
         try {
-            const { data } = await axios.post(`${url}/auth/login`, user, { withCredentials: true });
+            const { data } = await axios.post(`${url}/auth/login`, user, config);
             dispatch({ type: SET_USER, payload: data.user });
         } catch (error) {
             return error.response.data.msg;
@@ -80,7 +80,7 @@ const AppProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.delete(`${url}/auth/logout`, { withCredentials: true });
+            await axios.delete(`${url}/auth/logout`, config);
             dispatch({ type: SET_USER, payload: null });
         } catch (error) {
             console.log(error);
@@ -89,7 +89,7 @@ const AppProvider = ({ children }) => {
 
     const forgotPassword = async (payload) => {
         try {
-            const { data } = await axios.post(`${url}/auth/forgot-password`, payload, { withCredentials: true });
+            const { data } = await axios.post(`${url}/auth/forgot-password`, payload, config);
             return { msg: data.msg, type: 'success' };
         } catch (error) {
             return { msg: error.response.data.msg, type: 'danger' };
@@ -98,7 +98,7 @@ const AppProvider = ({ children }) => {
 
     const resetPassword = async (payload) => {
         try {
-            const { data } = await axios.post(`${url}/auth/reset-password`, payload, { withCredentials: true });
+            const { data } = await axios.post(`${url}/auth/reset-password`, payload, config);
             return { msg: data.msg, type: 'success' };
         } catch (error) {
             return { msg: error.response.data.msg, type: 'danger' };
@@ -107,7 +107,7 @@ const AppProvider = ({ children }) => {
 
     const updateUser = async (user) => {
         try {
-            const { data } = await axios.patch(`${url}/user/update`, user, { withCredentials: true });
+            const { data } = await axios.patch(`${url}/user/update`, user, config);
             dispatch({ type: SET_USER, payload: data.user });
         } catch (error) {
             console.log(error);
@@ -116,7 +116,7 @@ const AppProvider = ({ children }) => {
 
     const getAllTodos = async () => {
         try {
-            const { data } = await axios.get(`${url}/todos`, { withCredentials: true });
+            const { data } = await axios.get(`${url}/todos`, config);
             dispatch({ type: SET_TODOS, payload: data.todos });
         } catch (error) {
             console.log(error);
@@ -125,7 +125,7 @@ const AppProvider = ({ children }) => {
 
     const getTodayTodos = async () => {
         try {
-            const { data } = await axios.get(`${url}/todos/today`, { withCredentials: true });
+            const { data } = await axios.get(`${url}/todos/today`, config);
             dispatch({ type: SET_TODOS, payload: data.todos });
         } catch (error) {
             console.log(error);
@@ -134,7 +134,7 @@ const AppProvider = ({ children }) => {
 
     const createTodo = async (payload) => {
         try {
-            await axios.post(`${url}/todos`, payload, { withCredentials: true });
+            await axios.post(`${url}/todos`, payload, config);
             if (state.isToday) {
                 await getTodayTodos();
             } else {
@@ -147,7 +147,7 @@ const AppProvider = ({ children }) => {
 
     const updateTodo = async (id, payload) => {
         try {
-            await axios.patch(`${url}/todos/${id}`, payload, { withCredentials: true });
+            await axios.patch(`${url}/todos/${id}`, payload, config);
             if (state.isToday) {
                 await getTodayTodos();
             } else {
@@ -160,7 +160,7 @@ const AppProvider = ({ children }) => {
 
     const deleteTodo = async (id) => {
         try {
-            await axios.delete(`${url}/todos/${id}`, { withCredentials: true });
+            await axios.delete(`${url}/todos/${id}`, config);
             if (state.isToday) {
                 await getTodayTodos();
             } else {
@@ -173,7 +173,7 @@ const AppProvider = ({ children }) => {
 
     const clearCompleted = async () => {
         try {
-            await axios.delete(`${url}/todos`, { withCredentials: true });
+            await axios.delete(`${url}/todos`, config);
             if (state.isToday) {
                 await getTodayTodos();
             } else {

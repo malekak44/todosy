@@ -33,10 +33,7 @@ app.use(
     })
 );
 app.use(xss());
-app.use(cors({
-    credentials: true,
-    origin: 'https://todosy.vercel.app'
-}));
+app.use(cors({ credentials: true, origin: 'https://todosy.vercel.app' }));
 app.use(helmet());
 app.use(mongoSanitize());
 app.use(cookieParser(process.env.JWT_SECRET));
@@ -47,6 +44,11 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/quote', quoteRouter);
 app.use('/api/v1/todos', authenticateUser, todosRouter);
+
+app.get('/', (req, res) => {
+    res.send('Todosy Server')
+})
+
 app.use(errorHandler);
 app.use(notFound);
 

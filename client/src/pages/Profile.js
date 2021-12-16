@@ -37,6 +37,7 @@ const Profile = () => {
         try {
             const { data } = await axios.post(`${url}/user/upload`, imageData, { withCredentials: true });
             setImageUrl(data.secure_url);
+            updateUser({ image: imageUrl });
         } catch (error) {
             console.log(error)
         }

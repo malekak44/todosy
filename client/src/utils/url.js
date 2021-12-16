@@ -1,1 +1,1 @@
-export const url = 'http://localhost:5000/api/v1';
+export const url = 'https://todosy-server.herokuapp.com/api/v1';
